@@ -1,0 +1,601 @@
+/* ==========================================
+   GYMCONNECT - SIGNUP.CSS (PART 1)
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* Body */
+
+body{
+    background:#0f0f0f;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+}
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.signup-container{
+
+    width:90%;
+    max-width:1250px;
+
+    min-height:700px;
+
+    display:flex;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:#181818;
+
+    box-shadow:0 0 40px rgba(0,194,255,.18);
+}
+
+/* ==========================================
+   LEFT PANEL
+========================================== */
+
+.left-panel{
+
+    width:45%;
+
+    background:linear-gradient(135deg,#00c2ff,#006a8d);
+
+    color:white;
+
+    padding:60px 50px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.left-panel h1{
+
+    font-size:40px;
+
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+}
+
+.left-panel h2{
+
+    font-size:34px;
+
+    margin-bottom:25px;
+}
+
+.left-panel p{
+
+    font-size:17px;
+
+    line-height:30px;
+
+    max-width:420px;
+}
+
+.left-panel img{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin-top:40px;
+
+    animation:floatImage 4s ease-in-out infinite;
+}
+
+/* Floating Animation */
+
+@keyframes floatImage{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* ==========================================
+   RIGHT PANEL
+========================================== */
+
+.right-panel{
+
+    width:55%;
+
+    background:#111;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px;
+}
+
+/* Form */
+
+.right-panel form{
+
+    width:100%;
+
+    max-width:480px;
+}
+
+.right-panel h2{
+
+    text-align:center;
+
+    font-size:34px;
+
+    color:#00c2ff;
+
+    margin-bottom:35px;
+}
+/* ==========================================
+   INPUT FIELDS
+========================================== */
+
+.input-box{
+    margin-bottom:22px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    color:#dcdcdc;
+    font-size:15px;
+    font-weight:500;
+}
+
+.input-box input,
+.input-box select{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    background:#1d1d1d;
+
+    border:2px solid #2d2d2d;
+
+    border-radius:12px;
+
+    color:#ffffff;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:0.3s;
+}
+
+/* Placeholder */
+
+.input-box input::placeholder{
+
+    color:#9a9a9a;
+}
+
+/* Focus */
+
+.input-box input:focus,
+.input-box select:focus{
+
+    border-color:#00c2ff;
+
+    box-shadow:0 0 12px rgba(0,194,255,.35);
+}
+
+/* Select */
+
+.input-box select{
+
+    cursor:pointer;
+}
+
+.input-box select option{
+
+    background:#1d1d1d;
+
+    color:#ffffff;
+}
+
+/* ==========================================
+   CHECKBOX
+========================================== */
+
+.checkbox{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    margin:20px 0 30px;
+}
+
+.checkbox input{
+
+    margin-top:4px;
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:#00c2ff;
+
+    cursor:pointer;
+}
+
+.checkbox span{
+
+    color:#d0d0d0;
+
+    font-size:14px;
+
+    line-height:22px;
+}
+
+/* ==========================================
+   SIGNUP BUTTON
+========================================== */
+
+.signup-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    background:#00c2ff;
+
+    color:#000;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.signup-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px rgba(0,194,255,.55);
+
+    background:#14ccff;
+}
+
+/* ==========================================
+   LOGIN LINK
+========================================== */
+
+.login-link{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#bdbdbd;
+
+    font-size:15px;
+}
+
+.login-link a{
+
+    color:#00c2ff;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+}
+
+/* ==========================================
+   SMALL FADE ANIMATION
+========================================== */
+
+.signup-container{
+
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+
+}
+/* ==========================================
+   GYMCONNECT - SIGNUP.CSS (PART 3)
+   Responsive Design & Final Polish
+========================================== */
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f0f0f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00c2ff;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#00a0d6;
+}
+
+/* ===============================
+   Tablet View
+================================ */
+
+@media (max-width:992px){
+
+    .signup-container{
+
+        flex-direction:column;
+
+        width:95%;
+
+        margin:30px 0;
+    }
+
+    .left-panel,
+    .right-panel{
+
+        width:100%;
+    }
+
+    .left-panel{
+
+        padding:50px 30px;
+    }
+
+    .left-panel img{
+
+        max-width:300px;
+    }
+
+    .right-panel{
+
+        padding:40px 30px;
+    }
+
+    .right-panel form{
+
+        max-width:100%;
+    }
+
+}
+
+/* ===============================
+   Mobile View
+================================ */
+
+@media (max-width:768px){
+
+    body{
+
+        padding:20px;
+    }
+
+    .signup-container{
+
+        border-radius:18px;
+    }
+
+    .left-panel{
+
+        padding:40px 25px;
+    }
+
+    .left-panel h1{
+
+        font-size:30px;
+    }
+
+    .left-panel h2{
+
+        font-size:26px;
+    }
+
+    .left-panel p{
+
+        font-size:15px;
+
+        line-height:26px;
+    }
+
+    .left-panel img{
+
+        max-width:240px;
+
+        margin-top:30px;
+    }
+
+    .right-panel{
+
+        padding:35px 20px;
+    }
+
+    .right-panel h2{
+
+        font-size:28px;
+    }
+
+    .input-box input,
+    .input-box select{
+
+        padding:14px;
+        font-size:15px;
+    }
+
+    .signup-btn{
+
+        padding:15px;
+        font-size:17px;
+    }
+
+}
+
+/* ===============================
+   Small Mobile
+================================ */
+
+@media (max-width:480px){
+
+    .left-panel{
+
+        padding:30px 20px;
+    }
+
+    .left-panel h1{
+
+        font-size:24px;
+    }
+
+    .left-panel h2{
+
+        font-size:22px;
+    }
+
+    .left-panel p{
+
+        font-size:14px;
+    }
+
+    .left-panel img{
+
+        max-width:180px;
+    }
+
+    .right-panel{
+
+        padding:25px 15px;
+    }
+
+    .right-panel h2{
+
+        font-size:24px;
+    }
+
+    .checkbox{
+
+        align-items:flex-start;
+    }
+
+    .checkbox span{
+
+        font-size:13px;
+    }
+
+    .login-link{
+
+        font-size:14px;
+    }
+
+}
+
+/* ===============================
+   Input Hover
+================================ */
+
+.input-box input:hover,
+.input-box select:hover{
+
+    border-color:#00c2ff;
+}
+
+/* ===============================
+   Button Click Effect
+================================ */
+
+.signup-btn:active{
+
+    transform:scale(0.98);
+}
+
+/* ===============================
+   Image Hover
+================================ */
+
+.left-panel img{
+
+    transition:.4s;
+}
+
+.left-panel img:hover{
+
+    transform:scale(1.05);
+}
+
+/* ===============================
+   Smooth Transition
+================================ */
+
+*{
+
+    transition:0.3s;
+}

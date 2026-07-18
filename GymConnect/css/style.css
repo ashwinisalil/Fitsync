@@ -1,0 +1,715 @@
+/* ===========================================
+   GYMCONNECT - STYLE.CSS (PART 1)
+=========================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+/* Body */
+
+body{
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+    color:white;
+}
+
+/* Buttons */
+
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    border-radius:50px;
+    transition:.3s;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ===========================================
+   NAVBAR
+=========================================== */
+
+header{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    background:rgba(15,15,15,.95);
+    backdrop-filter:blur(10px);
+}
+
+.navbar{
+
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 0;
+}
+
+/* Logo */
+
+.logo h2{
+
+    color:#00c2ff;
+    letter-spacing:2px;
+    font-size:30px;
+}
+
+/* Menu */
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+.nav-links a{
+
+    color:white;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:#00c2ff;
+}
+
+/* Login Button */
+
+.login-btn{
+
+    border:2px solid #00c2ff;
+    color:#00c2ff;
+    margin-right:15px;
+}
+
+.login-btn:hover{
+
+    background:#00c2ff;
+    color:black;
+}
+
+/* Signup Button */
+
+.signup-btn{
+
+    background:#00c2ff;
+    color:black;
+}
+
+.signup-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px #00c2ff;
+}
+
+/* ===========================================
+   HERO SECTION
+=========================================== */
+
+.hero{
+
+    width:90%;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-top:120px;
+
+    gap:60px;
+}
+
+/* Left */
+
+.hero-left{
+
+    flex:1;
+}
+
+.small-title{
+
+    color:#00c2ff;
+
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+}
+
+.hero-left h1{
+
+    font-size:60px;
+
+    line-height:75px;
+
+    margin-bottom:30px;
+}
+
+.hero-text{
+
+    color:#c7c7c7;
+
+    line-height:32px;
+
+    font-size:18px;
+
+    margin-bottom:40px;
+
+    max-width:650px;
+}
+
+/* Hero Buttons */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+}
+
+.hero-btn{
+
+    background:#00c2ff;
+
+    color:black;
+}
+
+.hero-btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 25px #00c2ff;
+}
+
+/* Outline Button */
+
+.hero-outline{
+
+    border:2px solid white;
+}
+
+.hero-outline:hover{
+
+    background:white;
+
+    color:black;
+}
+
+/* Right */
+
+.hero-right{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.hero-right img{
+
+    width:100%;
+
+    max-width:520px;
+
+    filter:drop-shadow(0 0 40px #00c2ff);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+/* Floating Animation */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+    }
+
+    100%{
+
+        transform:translateY(0px);
+    }
+}
+
+/* ===========================================
+   STATISTICS
+=========================================== */
+
+.stats{
+
+    width:90%;
+
+    margin:80px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+}
+
+.card{
+
+    background:#1b1b1b;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    transition:.4s;
+
+    border:1px solid #2d2d2d;
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 0 30px rgba(0,194,255,.35);
+
+    border-color:#00c2ff;
+}
+
+.card h2{
+
+    color:#00c2ff;
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.card p{
+
+    color:#bdbdbd;
+
+    font-size:17px;
+}
+/* ===========================================
+   FEATURES SECTION
+=========================================== */
+
+.features{
+    width:90%;
+    margin:100px auto;
+    text-align:center;
+}
+
+.section-title{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:20px;
+    color:#ffffff;
+}
+
+.section-title::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:4px;
+    background:#00c2ff;
+    margin:15px auto 0;
+    border-radius:20px;
+}
+
+.feature-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    margin-top:60px;
+}
+
+.feature-box{
+    background:#1b1b1b;
+    border:1px solid #2b2b2b;
+    border-radius:20px;
+    padding:35px 30px;
+    transition:.4s;
+    cursor:pointer;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+    border-color:#00c2ff;
+    box-shadow:0 0 25px rgba(0,194,255,.35);
+}
+
+.feature-box h3{
+    color:#00c2ff;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.feature-box p{
+    color:#c7c7c7;
+    line-height:28px;
+    font-size:16px;
+}
+
+/* ===========================================
+   HOW IT WORKS
+=========================================== */
+
+.how{
+    width:90%;
+    margin:120px auto;
+    text-align:center;
+}
+
+.steps{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:70px;
+}
+
+.step{
+    flex:1;
+    min-width:180px;
+    background:#1b1b1b;
+    padding:35px 20px;
+    border-radius:20px;
+    border:1px solid #2b2b2b;
+    transition:.4s;
+}
+
+.step:hover{
+    transform:translateY(-10px);
+    border-color:#00c2ff;
+    box-shadow:0 0 20px rgba(0,194,255,.3);
+}
+
+.step span{
+    width:70px;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    border-radius:50%;
+    background:#00c2ff;
+    color:#000;
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.step h3{
+    color:#ffffff;
+    font-size:22px;
+}
+
+/* ===========================================
+   MEMBERSHIP TRANSFER
+=========================================== */
+
+.transfer{
+    width:90%;
+    margin:120px auto;
+    background:linear-gradient(135deg,#00c2ff,#0086b3);
+    border-radius:30px;
+    padding:80px 60px;
+    text-align:center;
+}
+
+.transfer-content h2{
+    font-size:46px;
+    color:#ffffff;
+    margin-bottom:25px;
+}
+
+.transfer-content p{
+    font-size:20px;
+    color:#f2f2f2;
+    line-height:34px;
+    max-width:850px;
+    margin:0 auto 40px;
+}
+
+.transfer .hero-btn{
+    background:#ffffff;
+    color:#0086b3;
+    font-weight:700;
+}
+
+.transfer .hero-btn:hover{
+    background:#0f0f0f;
+    color:#ffffff;
+    box-shadow:0 0 25px rgba(255,255,255,.5);
+}
+/* ===========================================
+   FOOTER
+=========================================== */
+
+footer{
+    background:#111;
+    padding:60px 20px;
+    text-align:center;
+    margin-top:100px;
+    border-top:1px solid #2d2d2d;
+}
+
+footer h2{
+    color:#00c2ff;
+    font-size:32px;
+    margin-bottom:20px;
+    letter-spacing:2px;
+}
+
+footer p{
+    color:#bdbdbd;
+    font-size:16px;
+    margin:10px 0;
+    line-height:28px;
+}
+
+/* ===========================================
+   SCROLLBAR
+=========================================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f0f0f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00c2ff;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#00a8dd;
+}
+
+/* ===========================================
+   SIMPLE FADE ANIMATION
+=========================================== */
+
+.hero,
+.features,
+.how,
+.transfer,
+.stats{
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+=========================================== */
+
+/* Tablet */
+
+@media(max-width:992px){
+
+    .navbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding-top:170px;
+    }
+
+    .hero-left h1{
+        font-size:46px;
+        line-height:58px;
+    }
+
+    .hero-text{
+        margin:auto;
+        margin-bottom:35px;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .steps{
+        justify-content:center;
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .logo h2{
+        font-size:24px;
+    }
+
+    .hero{
+        width:95%;
+    }
+
+    .hero-left h1{
+        font-size:34px;
+        line-height:46px;
+    }
+
+    .hero-text{
+        font-size:16px;
+        line-height:28px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:220px;
+        text-align:center;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .feature-container{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+
+    .transfer{
+        padding:50px 25px;
+    }
+
+    .transfer-content h2{
+        font-size:30px;
+    }
+
+    .transfer-content p{
+        font-size:17px;
+        line-height:28px;
+    }
+
+}
+
+/* Small Mobile */
+
+@media(max-width:480px){
+
+    .navbar{
+        width:95%;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .nav-buttons{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .hero-left h1{
+        font-size:28px;
+        line-height:40px;
+    }
+
+    .small-title{
+        font-size:12px;
+    }
+
+    .card{
+        padding:30px 15px;
+    }
+
+    .card h2{
+        font-size:30px;
+    }
+
+    .feature-box{
+        padding:25px;
+    }
+
+    .step{
+        min-width:100%;
+    }
+
+    footer h2{
+        font-size:26px;
+    }
+
+    footer p{
+        font-size:14px;
+    }
+
+}
