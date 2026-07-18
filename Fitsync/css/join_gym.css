@@ -1,0 +1,240 @@
+/* ==========================
+   JOIN GYM PAGE
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0b0f14;
+    color:#ffffff;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:40px;
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#cfcfcf;
+    font-size:18px;
+}
+
+/* ==========================
+   GYM GRID
+========================== */
+
+.gym-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+}
+
+/* ==========================
+   GYM CARD
+========================== */
+
+.gym-card{
+    background:#111827;
+    border:2px solid #00e5ff;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+    box-shadow:0 0 15px rgba(0,229,255,.15);
+}
+
+.gym-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 30px rgba(0,229,255,.4);
+}
+
+.gym-header{
+    background:#00e5ff;
+    color:#000;
+    padding:18px;
+    text-align:center;
+}
+
+.gym-header h2{
+    font-size:28px;
+}
+
+.gym-body{
+    padding:25px;
+}
+
+.gym-body p{
+    margin:15px 0;
+    color:#f5f5f5;
+    line-height:1.6;
+}
+
+.gym-body i{
+    color:#00e5ff;
+    width:30px;
+    text-align:center;
+}
+/* ==========================
+   CARD FOOTER
+========================== */
+
+.gym-footer{
+    padding:20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* ==========================
+   JOIN BUTTON
+========================== */
+
+.join-btn{
+    display:inline-block;
+    width:100%;
+    padding:14px;
+    background:#00e5ff;
+    color:#000;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.join-btn:hover{
+    background:#00bcd4;
+    transform:scale(1.03);
+    box-shadow:0 0 15px rgba(0,229,255,.5);
+}
+
+/* ==========================
+   NO GYM AVAILABLE
+========================== */
+
+.no-gym{
+    grid-column:1/-1;
+    text-align:center;
+    background:#111827;
+    border:2px dashed #00e5ff;
+    border-radius:15px;
+    padding:50px;
+}
+
+.no-gym i{
+    font-size:70px;
+    color:#00e5ff;
+    margin-bottom:20px;
+}
+
+.no-gym h2{
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+.no-gym p{
+    color:#cccccc;
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+
+.gym-card{
+    animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b0f14;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00e5ff;
+    border-radius:20px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+    .gym-container{
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    }
+
+}
+
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+    }
+
+    .header h1{
+        font-size:32px;
+    }
+
+    .header p{
+        font-size:16px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .gym-container{
+        grid-template-columns:1fr;
+    }
+
+    .gym-header h2{
+        font-size:24px;
+    }
+
+    .gym-body{
+        padding:20px;
+    }
+
+    .join-btn{
+        font-size:16px;
+    }
+
+}

@@ -1,0 +1,612 @@
+/* ==========================================
+   GYMCONNECT DASHBOARD
+   Part 1
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:#111827;
+
+    color:#ffffff;
+
+}
+
+/* =============================
+Dashboard Layout
+============================= */
+
+.dashboard{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* =============================
+Sidebar
+============================= */
+
+.sidebar{
+
+    width:270px;
+
+    background:#0f172a;
+
+    padding:30px 20px;
+
+    position:fixed;
+
+    height:100vh;
+
+    left:0;
+
+    top:0;
+
+}
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.logo h2{
+
+    color:#00c2ff;
+
+    letter-spacing:2px;
+
+    font-size:28px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar ul li{
+
+    margin:15px 0;
+
+}
+
+.sidebar ul li a{
+
+    display:block;
+
+    padding:15px;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.sidebar ul li a:hover{
+
+    background:#00c2ff;
+
+    color:#000;
+
+}
+
+.active a{
+
+    background:#00c2ff;
+
+    color:#000 !important;
+
+    font-weight:bold;
+
+}
+
+/* =============================
+Main Content
+============================= */
+
+.main-content{
+
+    margin-left:270px;
+
+    width:calc(100% - 270px);
+
+    padding:30px;
+
+}
+
+/* =============================
+Top Bar
+============================= */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#1e293b;
+
+    padding:20px 30px;
+
+    border-radius:15px;
+
+    margin-bottom:30px;
+
+}
+
+.topbar h1{
+
+    font-size:30px;
+
+}
+
+.topbar p{
+
+    color:#cbd5e1;
+
+    margin-top:5px;
+
+}
+
+.profile{
+
+    background:#00c2ff;
+
+    color:#000;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+/* ==========================================
+   GYMCONNECT DASHBOARD
+   Part 2
+========================================== */
+
+/* =============================
+Dashboard Cards
+============================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+}
+
+.card{
+
+    background:#1e293b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.3s;
+
+    border-left:5px solid #00c2ff;
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,194,255,.25);
+
+}
+
+.card h2{
+
+    font-size:38px;
+
+    color:#00c2ff;
+
+    margin-bottom:12px;
+
+}
+
+.card p{
+
+    color:#cbd5e1;
+
+    font-size:17px;
+
+}
+
+/* =============================
+Recent Members Table
+============================= */
+
+.table-section{
+
+    background:#1e293b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+}
+
+.table-section h2{
+
+    margin-bottom:20px;
+
+    color:#00c2ff;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+table th{
+
+    background:#0f172a;
+
+    color:#ffffff;
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #334155;
+
+    color:#d1d5db;
+
+}
+
+table tr:hover{
+
+    background:#263548;
+
+}
+
+/* =============================
+Buttons
+============================= */
+
+.btn{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:#00c2ff;
+
+    color:#000;
+
+}
+
+.btn-primary:hover{
+
+    background:#19ccff;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-danger{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+.btn-danger:hover{
+
+    background:#dc2626;
+
+}
+
+/* =============================
+Status Labels
+============================= */
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.active-status{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.expired-status{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+.pending-status{
+
+    background:#f59e0b;
+
+    color:black;
+
+}
+/* ==========================================
+   GYMCONNECT DASHBOARD
+   Part 3 - Responsive & Animations
+========================================== */
+
+/* =============================
+Smooth Animation
+============================= */
+
+.main-content,
+.card,
+.table-section{
+
+    animation:fadeIn .7s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =============================
+Scrollbar
+============================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00c2ff;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#00a8dd;
+
+}
+
+/* =============================
+Sidebar Animation
+============================= */
+
+.sidebar ul li a{
+
+    transition:all .3s ease;
+
+}
+
+.sidebar ul li a:hover{
+
+    transform:translateX(8px);
+
+}
+
+/* =============================
+Table Responsive
+============================= */
+
+.table-section{
+
+    overflow-x:auto;
+
+}
+
+/* =============================
+Tablet View
+============================= */
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:220px;
+
+    }
+
+    .main-content{
+
+        margin-left:220px;
+
+        width:calc(100% - 220px);
+
+    }
+
+    .cards{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* =============================
+Mobile View
+============================= */
+
+@media(max-width:768px){
+
+    .dashboard{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        width:100%;
+
+        padding:20px;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    table{
+
+        min-width:600px;
+
+    }
+
+}
+
+/* =============================
+Small Mobile
+============================= */
+
+@media(max-width:480px){
+
+    .logo h2{
+
+        font-size:22px;
+
+    }
+
+    .topbar h1{
+
+        font-size:24px;
+
+    }
+
+    .card{
+
+        padding:20px;
+
+    }
+
+    .card h2{
+
+        font-size:30px;
+
+    }
+
+    .card p{
+
+        font-size:15px;
+
+    }
+
+    .profile{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}
