@@ -51,6 +51,10 @@ $userName = $_SESSION["full_name"];
             </li>
 
             <li>
+                <a href="membership_plans.php">💳 Membership Plans</a>
+            </li>
+
+            <li>
                 <a href="register_gym.php">🏢 Register Gym</a>
             </li>
 
