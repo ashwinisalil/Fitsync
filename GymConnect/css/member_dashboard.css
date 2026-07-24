@@ -25,6 +25,31 @@ body{
     background:#111827;
     border-right:2px solid #00e5ff;
     padding:20px;
+
+    /* Sidebar Scroll */
+    overflow-y:auto;
+    overflow-x:hidden;
+    scrollbar-width:thin;
+    scrollbar-color:#00e5ff #111827;
+}
+
+/* Sidebar Webkit Scrollbar */
+
+.sidebar::-webkit-scrollbar{
+    width:6px;
+}
+
+.sidebar::-webkit-scrollbar-track{
+    background:#111827;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:#00e5ff;
+    border-radius:20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+    background:#00bcd4;
 }
 
 .logo{
@@ -168,6 +193,7 @@ body{
 .details-card table tr:last-child td{
     border-bottom:none;
 }
+
 /* ==========================
    QUICK ACTION BUTTONS
 ========================== */
@@ -291,6 +317,10 @@ body{
     .sidebar{
         width:70px;
         padding:15px 8px;
+
+        /* Keep Sidebar Scrollable on Mobile */
+        overflow-y:auto;
+        overflow-x:hidden;
     }
 
     .logo h2{
@@ -354,4 +384,20 @@ body{
         font-size:26px;
     }
 
+}
+.location-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #00c2ff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.location-btn:hover {
+    background: #19ccff;
+    transform: translateY(-2px);
 }

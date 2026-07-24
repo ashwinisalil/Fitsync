@@ -517,6 +517,7 @@ while($row = $notifications->fetch_assoc()){
 
 </div>
 
+
 </div>
 
 <script src="../js/member_dashboard.js"></script>

@@ -1,0 +1,919 @@
+/* =========================================================
+   GYMCONNECT - OWNER PROFILE CSS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    background: #111827;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00c2ff;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00a8dd;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.profile-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 35px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #1e293b;
+
+    padding: 25px 30px;
+
+    border-radius: 18px;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #263548;
+}
+
+.page-header h1 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.page-header p {
+    color: #94a3b8;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+    display: inline-block;
+
+    background: #00c2ff;
+
+    color: #000000;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #19ccff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.profile-card {
+    background: #1e293b;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    border: 1px solid #263548;
+
+    margin-bottom: 35px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   PROFILE TOP
+========================================================= */
+
+.profile-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding-bottom: 30px;
+
+    border-bottom: 1px solid #334155;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.profile-image-box {
+    width: 125px;
+
+    height: 125px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 4px solid #00c2ff;
+
+    background: #0f172a;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.profile-image {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   DEFAULT PROFILE
+========================================================= */
+
+.default-profile {
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #00c2ff;
+
+    color: #000000;
+
+    font-size: 50px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PROFILE BASIC INFORMATION
+========================================================= */
+
+.profile-basic h2 {
+    font-size: 28px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.owner-role {
+    display: inline-block;
+
+    color: #00c2ff;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+}
+
+.owner-email {
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   PROFILE DETAILS
+========================================================= */
+
+.profile-details {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+    padding: 30px 0;
+}
+
+.detail-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    background: #0f172a;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #263548;
+}
+
+.detail-label {
+    color: #64748b;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   ROLE BADGE
+========================================================= */
+
+.role-badge {
+    color: #00c2ff;
+}
+
+
+/* =========================================================
+   PROFILE ACTIONS
+========================================================= */
+
+.profile-actions {
+    display: flex;
+
+    gap: 15px;
+
+    padding-top: 5px;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #00c2ff;
+
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background: #19ccff;
+
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #334155;
+
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MY GYMS SECTION
+========================================================= */
+
+.gyms-section {
+    margin-bottom: 40px;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 25px;
+
+    font-weight: 600;
+}
+
+.section-header p {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   ADD GYM BUTTON
+========================================================= */
+
+.add-gym-btn {
+    display: inline-block;
+
+    background: #00c2ff;
+
+    color: #000000;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.add-gym-btn:hover {
+    background: #19ccff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   GYM GRID
+========================================================= */
+
+.gym-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(320px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   GYM CARD
+========================================================= */
+
+.gym-card {
+    background: #1e293b;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid #263548;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.12);
+}
+
+.gym-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #00c2ff;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 194, 255, 0.12);
+}
+
+
+/* =========================================================
+   GYM IMAGE
+========================================================= */
+
+.gym-image {
+    width: 100%;
+
+    height: 190px;
+
+    background: #0f172a;
+
+    overflow: hidden;
+}
+
+.gym-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.4s;
+}
+
+.gym-card:hover
+.gym-image img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   GYM PLACEHOLDER
+========================================================= */
+
+.gym-placeholder {
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e293b
+        );
+}
+
+
+/* =========================================================
+   GYM INFORMATION
+========================================================= */
+
+.gym-info {
+    padding: 22px;
+}
+
+
+/* =========================================================
+   GYM TITLE
+========================================================= */
+
+.gym-title-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.gym-title-row h3 {
+    color: #ffffff;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   GYM STATUS
+========================================================= */
+
+.gym-status {
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+}
+
+.gym-status.approved {
+    background:
+        rgba(34, 197, 94, 0.12);
+
+    color: #22c55e;
+}
+
+.gym-status.pending {
+    background:
+        rgba(245, 158, 11, 0.12);
+
+    color: #f59e0b;
+}
+
+.gym-status.rejected {
+    background:
+        rgba(239, 68, 68, 0.12);
+
+    color: #ef4444;
+}
+
+
+/* =========================================================
+   GYM LOCATION
+========================================================= */
+
+.gym-location {
+    color: #00c2ff;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   GYM ADDRESS
+========================================================= */
+
+.gym-address {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    min-height: 45px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   GYM CONTACT
+========================================================= */
+
+.gym-contact {
+    padding: 15px 0;
+
+    border-top: 1px solid #334155;
+
+    border-bottom: 1px solid #334155;
+}
+
+.gym-contact p {
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    margin: 6px 0;
+}
+
+
+/* =========================================================
+   GYM TIMING
+========================================================= */
+
+.gym-timing {
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    padding: 15px 0;
+}
+
+
+/* =========================================================
+   GYM ACTIONS
+========================================================= */
+
+.gym-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.view-gym-btn,
+.plans-btn {
+    flex: 1;
+
+    text-align: center;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.view-gym-btn {
+    background: #00c2ff;
+
+    color: #000000;
+}
+
+.view-gym-btn:hover {
+    background: #19ccff;
+}
+
+.plans-btn {
+    background: #334155;
+
+    color: #ffffff;
+}
+
+.plans-btn:hover {
+    background: #475569;
+}
+
+
+/* =========================================================
+   NO GYMS
+========================================================= */
+
+.no-gyms {
+    background: #1e293b;
+
+    border: 1px solid #263548;
+
+    border-radius: 18px;
+
+    padding: 60px 30px;
+
+    text-align: center;
+}
+
+.no-gyms-icon {
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+.no-gyms h3 {
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.no-gyms p {
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.profile-card,
+.gyms-section {
+    animation:
+        fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .profile-container {
+        padding: 20px;
+    }
+
+    .page-header {
+        padding: 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .back-btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .profile-card {
+        padding: 25px;
+    }
+
+    .profile-top {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .profile-details {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .section-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .add-gym-btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .profile-container {
+        padding: 15px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-image-box {
+        width: 105px;
+
+        height: 105px;
+    }
+
+    .default-profile {
+        font-size: 40px;
+    }
+
+    .profile-basic h2 {
+        font-size: 23px;
+    }
+
+    .section-header h2 {
+        font-size: 21px;
+    }
+
+    .gym-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gym-title-row {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}

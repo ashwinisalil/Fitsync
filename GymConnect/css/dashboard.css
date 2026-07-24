@@ -1,612 +1,632 @@
-/* ==========================================
-   GYMCONNECT DASHBOARD
-   Part 1
-========================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* =========================================================
+   GYMCONNECT OWNER DASHBOARD
+   Complete Dashboard CSS
+   Theme: Dark Navy + Cyan
+========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+
+/* =========================================================
+   1. GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-    background:#111827;
-
-    color:#ffffff;
-
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-/* =============================
-Dashboard Layout
-============================= */
-
-.dashboard{
-
-    display:flex;
-
-    min-height:100vh;
-
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #111827;
+    color: #ffffff;
 }
 
-/* =============================
-Sidebar
-============================= */
 
-.sidebar{
+/* =========================================================
+   2. MAIN DASHBOARD CONTAINER
+========================================================= */
 
-    width:270px;
-
-    background:#0f172a;
-
-    padding:30px 20px;
-
-    position:fixed;
-
-    height:100vh;
-
-    left:0;
-
-    top:0;
-
+.dashboard {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
 }
 
-.logo{
 
-    text-align:center;
+/* =========================================================
+   3. SIDEBAR
+========================================================= */
 
-    margin-bottom:40px;
+.sidebar {
+    position: fixed;
 
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    background: #0f172a;
+
+    z-index: 9999;
+
+    /* Sidebar scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0;
+
+    border-right: 1px solid #1e293b;
 }
 
-.logo h2{
 
-    color:#00c2ff;
+/* =========================================================
+   4. SIDEBAR SCROLLBAR
+========================================================= */
 
-    letter-spacing:2px;
-
-    font-size:28px;
-
+.sidebar::-webkit-scrollbar {
+    width: 8px;
 }
 
-.sidebar ul{
-
-    list-style:none;
-
+.sidebar::-webkit-scrollbar-track {
+    background: #0f172a;
 }
 
-.sidebar ul li{
-
-    margin:15px 0;
-
+.sidebar::-webkit-scrollbar-thumb {
+    background: #00c2ff;
+    border-radius: 20px;
 }
 
-.sidebar ul li a{
-
-    display:block;
-
-    padding:15px;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:12px;
-
-    transition:.3s;
-
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #00a8dd;
 }
 
-.sidebar ul li a:hover{
 
-    background:#00c2ff;
+/* Firefox */
 
-    color:#000;
-
+.sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #00c2ff #0f172a;
 }
 
-.active a{
 
-    background:#00c2ff;
+/* =========================================================
+   5. SIDEBAR LOGO
+========================================================= */
 
-    color:#000 !important;
+.sidebar .logo {
+    width: 100%;
 
-    font-weight:bold;
+    padding: 30px 20px;
 
+    text-align: center;
+
+    background: #0f172a;
+
+    border-bottom: 1px solid #1e293b;
 }
 
-/* =============================
-Main Content
-============================= */
+.sidebar .logo h2 {
+    color: #00c2ff;
 
-.main-content{
+    font-size: 27px;
 
-    margin-left:270px;
+    font-weight: 700;
 
-    width:calc(100% - 270px);
-
-    padding:30px;
-
+    letter-spacing: 2px;
 }
 
-/* =============================
-Top Bar
-============================= */
 
-.topbar{
+/* =========================================================
+   6. SIDEBAR MENU
+========================================================= */
 
-    display:flex;
+.sidebar ul {
+    width: 100%;
 
-    justify-content:space-between;
+    list-style: none;
 
-    align-items:center;
+    padding: 20px 15px 40px 15px;
 
-    background:#1e293b;
-
-    padding:20px 30px;
-
-    border-radius:15px;
-
-    margin-bottom:30px;
-
+    margin: 0;
 }
 
-.topbar h1{
+.sidebar ul li {
+    width: 100%;
 
-    font-size:30px;
-
+    margin-bottom: 10px;
 }
 
-.topbar p{
+.sidebar ul li a {
+    display: block;
 
-    color:#cbd5e1;
+    width: 100%;
 
-    margin-top:5px;
+    padding: 14px 16px;
 
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
-.profile{
 
-    background:#00c2ff;
+/* =========================================================
+   7. SIDEBAR HOVER
+========================================================= */
 
-    color:#000;
+.sidebar ul li a:hover {
+    background: #00c2ff;
 
-    padding:12px 20px;
+    color: #000000;
 
-    border-radius:30px;
-
-    font-weight:600;
-
-}
-/* ==========================================
-   GYMCONNECT DASHBOARD
-   Part 2
-========================================== */
-
-/* =============================
-Dashboard Cards
-============================= */
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:25px;
-
-    margin-bottom:40px;
-
+    transform: translateX(5px);
 }
 
-.card{
 
-    background:#1e293b;
+/* =========================================================
+   8. ACTIVE SIDEBAR ITEM
+========================================================= */
 
-    border-radius:18px;
+.sidebar ul li.active a {
+    background: #00c2ff;
 
-    padding:30px;
+    color: #000000;
 
-    transition:.3s;
+    font-weight: 700;
 
-    border-left:5px solid #00c2ff;
-
-    cursor:pointer;
-
+    box-shadow:
+        0 5px 15px
+        rgba(0, 194, 255, 0.20);
 }
 
-.card:hover{
 
-    transform:translateY(-8px);
+/* =========================================================
+   9. MAIN CONTENT
+========================================================= */
 
-    box-shadow:0 15px 35px rgba(0,194,255,.25);
+.main-content {
+    margin-left: 270px;
 
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+
+    padding: 30px;
 }
 
-.card h2{
 
-    font-size:38px;
+/* =========================================================
+   10. TOP BAR
+========================================================= */
 
-    color:#00c2ff;
+.topbar {
+    display: flex;
 
-    margin-bottom:12px;
+    justify-content: space-between;
 
+    align-items: center;
+
+    width: 100%;
+
+    background: #1e293b;
+
+    padding: 20px 30px;
+
+    margin-bottom: 30px;
+
+    border-radius: 15px;
 }
 
-.card p{
+.topbar h1 {
+    font-size: 30px;
 
-    color:#cbd5e1;
-
-    font-size:17px;
-
+    font-weight: 600;
 }
 
-/* =============================
-Recent Members Table
-============================= */
+.topbar p {
+    margin-top: 5px;
 
-.table-section{
+    color: #cbd5e1;
 
-    background:#1e293b;
-
-    border-radius:18px;
-
-    padding:30px;
-
+    font-size: 15px;
 }
 
-.table-section h2{
 
-    margin-bottom:20px;
+/* =========================================================
+   11. PROFILE BADGE
+========================================================= */
 
-    color:#00c2ff;
+.profile {
+    background: #00c2ff;
 
+    color: #000000;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
 }
 
-table{
 
-    width:100%;
+/* =========================================================
+   12. DASHBOARD CARDS
+========================================================= */
 
-    border-collapse:collapse;
+.cards {
+    display: grid;
 
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    width: 100%;
+
+    margin-bottom: 40px;
 }
 
-table th{
+.card {
+    background: #1e293b;
 
-    background:#0f172a;
+    border-radius: 18px;
 
-    color:#ffffff;
+    padding: 30px;
 
-    padding:15px;
+    border-left: 5px solid #00c2ff;
 
-    text-align:left;
-
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-table td{
+.card:hover {
+    transform: translateY(-7px);
 
-    padding:15px;
-
-    border-bottom:1px solid #334155;
-
-    color:#d1d5db;
-
+    box-shadow:
+        0 15px 35px
+        rgba(0, 194, 255, 0.20);
 }
 
-table tr:hover{
+.card h2 {
+    font-size: 38px;
 
-    background:#263548;
+    color: #00c2ff;
 
+    margin-bottom: 10px;
 }
 
-/* =============================
-Buttons
-============================= */
+.card p {
+    color: #cbd5e1;
 
-.btn{
-
-    display:inline-block;
-
-    padding:12px 22px;
-
-    border-radius:10px;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:.3s;
-
+    font-size: 16px;
 }
 
-.btn-primary{
 
-    background:#00c2ff;
+/* =========================================================
+   13. TABLE SECTION
+========================================================= */
 
-    color:#000;
+.table-section {
+    width: 100%;
 
+    background: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    overflow-x: auto;
 }
 
-.btn-primary:hover{
+.table-section h2 {
+    color: #00c2ff;
 
-    background:#19ccff;
+    margin-bottom: 20px;
 
-    transform:translateY(-2px);
-
+    font-size: 22px;
 }
 
-.btn-danger{
 
-    background:#ef4444;
+/* =========================================================
+   14. TABLE
+========================================================= */
 
-    color:white;
+table {
+    width: 100%;
 
+    min-width: 500px;
+
+    border-collapse: collapse;
 }
 
-.btn-danger:hover{
+table th {
+    background: #0f172a;
 
-    background:#dc2626;
+    color: #ffffff;
 
+    padding: 15px;
+
+    text-align: left;
+
+    font-weight: 600;
 }
 
-/* =============================
-Status Labels
-============================= */
+table td {
+    padding: 15px;
 
-.status{
+    color: #d1d5db;
 
-    padding:6px 14px;
-
-    border-radius:20px;
-
-    font-size:14px;
-
-    font-weight:600;
-
+    border-bottom:
+        1px solid #334155;
 }
 
-.active-status{
-
-    background:#22c55e;
-
-    color:white;
-
+table tr:hover {
+    background: #263548;
 }
 
-.expired-status{
 
-    background:#ef4444;
+/* =========================================================
+   15. BUTTONS
+========================================================= */
 
-    color:white;
+.btn {
+    display: inline-block;
 
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: all 0.3s ease;
 }
 
-.pending-status{
+.btn-primary {
+    background: #00c2ff;
 
-    background:#f59e0b;
-
-    color:black;
-
-}
-/* ==========================================
-   GYMCONNECT DASHBOARD
-   Part 3 - Responsive & Animations
-========================================== */
-
-/* =============================
-Smooth Animation
-============================= */
-
-.main-content,
-.card,
-.table-section{
-
-    animation:fadeIn .7s ease;
+    color: #000000;
 }
 
-@keyframes fadeIn{
+.btn-primary:hover {
+    background: #19ccff;
 
-    from{
+    transform: translateY(-2px);
+}
 
-        opacity:0;
-        transform:translateY(20px);
+.btn-danger {
+    background: #ef4444;
 
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+
+/* =========================================================
+   16. STATUS LABELS
+========================================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.active-status {
+    background: #22c55e;
+
+    color: #ffffff;
+}
+
+.expired-status {
+    background: #ef4444;
+
+    color: #ffffff;
+}
+
+.pending-status {
+    background: #f59e0b;
+
+    color: #000000;
+}
+
+
+/* =========================================================
+   17. PAGE ANIMATION
+========================================================= */
+
+.main-content {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
     }
 
-    to{
+    to {
+        opacity: 1;
 
-        opacity:1;
-        transform:translateY(0);
-
+        transform: translateY(0);
     }
-
 }
 
-/* =============================
-Scrollbar
-============================= */
 
-::-webkit-scrollbar{
+/* =========================================================
+   18. MAIN PAGE SCROLLBAR
+========================================================= */
 
-    width:10px;
-
+body::-webkit-scrollbar {
+    width: 10px;
 }
 
-::-webkit-scrollbar-track{
-
-    background:#111827;
-
+body::-webkit-scrollbar-track {
+    background: #111827;
 }
 
-::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb {
+    background: #00c2ff;
 
-    background:#00c2ff;
-
-    border-radius:20px;
-
+    border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-
-    background:#00a8dd;
-
+body::-webkit-scrollbar-thumb:hover {
+    background: #00a8dd;
 }
 
-/* =============================
-Sidebar Animation
-============================= */
 
-.sidebar ul li a{
+/* =========================================================
+   19. TABLET
+========================================================= */
 
-    transition:all .3s ease;
+@media (max-width: 992px) {
 
+    .sidebar {
+        width: 230px;
+    }
+
+    .main-content {
+        margin-left: 230px;
+
+        width: calc(100% - 230px);
+
+        padding: 25px;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
 }
 
-.sidebar ul li a:hover{
 
-    transform:translateX(8px);
+/* =========================================================
+   20. MOBILE
+========================================================= */
 
+@media (max-width: 768px) {
+
+    .dashboard {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: 400px;
+
+        overflow-y: auto;
+
+        border-right: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+    }
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .profile {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* =============================
-Table Responsive
-============================= */
 
-.table-section{
+/* =========================================================
+   21. SMALL MOBILE
+========================================================= */
 
-    overflow-x:auto;
+@media (max-width: 480px) {
 
-}
-
-/* =============================
-Tablet View
-============================= */
-
-@media(max-width:992px){
-
-    .sidebar{
-
-        width:220px;
-
+    .sidebar {
+        max-height: 350px;
     }
 
-    .main-content{
-
-        margin-left:220px;
-
-        width:calc(100% - 220px);
-
+    .sidebar .logo h2 {
+        font-size: 22px;
     }
 
-    .cards{
+    .sidebar ul li a {
+        padding: 13px;
 
-        grid-template-columns:repeat(2,1fr);
-
+        font-size: 14px;
     }
 
-}
-
-/* =============================
-Mobile View
-============================= */
-
-@media(max-width:768px){
-
-    .dashboard{
-
-        flex-direction:column;
-
+    .main-content {
+        padding: 15px;
     }
 
-    .sidebar{
-
-        position:relative;
-
-        width:100%;
-
-        height:auto;
-
+    .topbar {
+        padding: 20px;
     }
 
-    .main-content{
-
-        margin-left:0;
-
-        width:100%;
-
-        padding:20px;
-
+    .topbar h1 {
+        font-size: 24px;
     }
 
-    .topbar{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:15px;
-
+    .card {
+        padding: 22px;
     }
 
-    .cards{
-
-        grid-template-columns:1fr;
-
+    .card h2 {
+        font-size: 30px;
     }
 
-    table{
-
-        min-width:600px;
-
+    .table-section {
+        padding: 20px;
     }
-
-}
-
-/* =============================
-Small Mobile
-============================= */
-
-@media(max-width:480px){
-
-    .logo h2{
-
-        font-size:22px;
-
-    }
-
-    .topbar h1{
-
-        font-size:24px;
-
-    }
-
-    .card{
-
-        padding:20px;
-
-    }
-
-    .card h2{
-
-        font-size:30px;
-
-    }
-
-    .card p{
-
-        font-size:15px;
-
-    }
-
-    .profile{
-
-        width:100%;
-
-        text-align:center;
-
-    }
-
 }

@@ -1,119 +1,172 @@
 ```php
 <?php
 
-/* =========================================================
-   GYMCONNECT - PAYMENT PROCESS
-========================================================= */
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 session_start();
-
-
-/* =========================================================
-   MEMBER LOGIN CHECK
-========================================================= */
 
 if (
     !isset($_SESSION["user_id"]) ||
-    !isset($_SESSION["role"]) ||
-    $_SESSION["role"] !== "member"
+    $_SESSION["role"] !== "owner"
 ) {
+
     header("Location: ../login.php");
+
     exit();
+
 }
 
-
-/* =========================================================
-   DATABASE CONNECTION
-========================================================= */
 
 require_once "../database/connection.php";
 
 
 /* =========================================================
-   ONLY ALLOW POST REQUEST
+   ONLY POST REQUEST
 ========================================================= */
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
-    header("Location: join_gym.php");
+    header("Location: members.php");
+
     exit();
 
 }
 
 
-/* =========================================================
-   GET FORM DATA
-========================================================= */
+$owner_id = (int) $_SESSION["user_id"];
 
-$member_id = (int) $_SESSION["user_id"];
-
-$plan_id = isset($_POST["plan_id"])
-    ? (int) $_POST["plan_id"]
-    : 0;
-
-$gym_id = isset($_POST["gym_id"])
-    ? (int) $_POST["gym_id"]
-    : 0;
-
-$payment_method = trim(
-    $_POST["payment_method"] ?? ""
+$email = trim(
+    $_POST["email"] ?? ""
 );
 
+$gym_id = (int) (
+    $_POST["gym_id"] ?? 0
+);
 
-/* =========================================================
-   BASIC VALIDATION
-========================================================= */
+$plan_id = (int) (
+    $_POST["plan_id"] ?? 0
+);
 
-if ($plan_id <= 0) {
+$start_date =
+    $_POST["start_date"] ?? "";
 
-    die("Invalid membership plan.");
-
-}
-
-if ($gym_id <= 0) {
-
-    die("Invalid gym.");
-
-}
-
-if (empty($payment_method)) {
-
-    die("Please select a payment method.");
-
-}
+$payment_method =
+    trim(
+        $_POST["payment_method"] ?? ""
+    );
 
 
 /* =========================================================
-   GET MEMBERSHIP PLAN
+   VALIDATION
 ========================================================= */
 
-$sql = "
+if (
+    empty($email) ||
+    $gym_id <= 0 ||
+    $plan_id <= 0 ||
+    empty($start_date) ||
+    empty($payment_method)
+) {
+
+    die(
+        "Please fill all required fields."
+    );
+
+}
+
+
+/* =========================================================
+   FIND MEMBER
+========================================================= */
+
+$stmt = $conn->prepare("
+    SELECT user_id
+    FROM users
+    WHERE email = ?
+    AND role = 'member'
+    LIMIT 1
+");
+
+$stmt->bind_param(
+    "s",
+    $email
+);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+
+if ($result->num_rows === 0) {
+
+    $stmt->close();
+
+    die(
+        "No GymConnect member found with this email. "
+        . "Ask the member to create an account first."
+    );
+
+}
+
+
+$member =
+    $result->fetch_assoc();
+
+$member_id =
+    (int) $member["user_id"];
+
+$stmt->close();
+
+
+/* =========================================================
+   VERIFY GYM BELONGS TO OWNER
+========================================================= */
+
+$stmt = $conn->prepare("
+    SELECT gym_id
+    FROM gyms
+    WHERE gym_id = ?
+    AND owner_id = ?
+    LIMIT 1
+");
+
+$stmt->bind_param(
+    "ii",
+    $gym_id,
+    $owner_id
+);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+
+if ($result->num_rows === 0) {
+
+    $stmt->close();
+
+    die(
+        "Invalid gym selection."
+    );
+
+}
+
+$stmt->close();
+
+
+/* =========================================================
+   GET PLAN
+========================================================= */
+
+$stmt = $conn->prepare("
     SELECT
         plan_id,
-        gym_id,
         duration_months,
         price,
         plan_name
     FROM membership_plans
     WHERE plan_id = ?
     AND gym_id = ?
-    AND is_active = 1
     LIMIT 1
-";
-
-$stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-
-    die(
-        "Unable to prepare membership plan query: "
-        . $conn->error
-    );
-
-}
+");
 
 $stmt->bind_param(
     "ii",
@@ -126,88 +179,82 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 
-/* =========================================================
-   CHECK PLAN
-========================================================= */
-
 if ($result->num_rows === 0) {
 
     $stmt->close();
 
-    die("Invalid membership plan or gym.");
+    die(
+        "Invalid membership plan."
+    );
 
 }
 
-$plan = $result->fetch_assoc();
+
+$plan =
+    $result->fetch_assoc();
+
+$duration =
+    (int) $plan["duration_months"];
+
+$amount =
+    (float) $plan["price"];
 
 $stmt->close();
 
 
-$duration = (int) $plan["duration_months"];
-
-$amount = (float) $plan["price"];
-
-
 /* =========================================================
-   CHECK IF MEMBER ALREADY HAS ACTIVE MEMBERSHIP
+   CHECK ACTIVE MEMBERSHIP
 ========================================================= */
 
-$check = $conn->prepare("
+$stmt = $conn->prepare("
     SELECT membership_id
     FROM memberships
     WHERE member_id = ?
+    AND gym_id = ?
     AND status = 'Active'
     LIMIT 1
 ");
 
-if (!$check) {
-
-    die(
-        "Unable to check existing membership: "
-        . $conn->error
-    );
-
-}
-
-$check->bind_param(
-    "i",
-    $member_id
+$stmt->bind_param(
+    "ii",
+    $member_id,
+    $gym_id
 );
 
-$check->execute();
+$stmt->execute();
 
-$activeMembership = $check->get_result();
+$result = $stmt->get_result();
 
 
-if ($activeMembership->num_rows > 0) {
+if ($result->num_rows > 0) {
 
-    $check->close();
+    $stmt->close();
 
     die(
-        "You already have an active membership. "
-        . "You cannot purchase another membership "
-        . "until your current membership expires or is transferred."
+        "This member already has an active membership "
+        . "in this gym."
     );
 
 }
 
-$check->close();
+$stmt->close();
 
 
 /* =========================================================
-   CALCULATE MEMBERSHIP DATES
+   CALCULATE END DATE
 ========================================================= */
-
-$start_date = date("Y-m-d");
 
 $end_date = date(
     "Y-m-d",
-    strtotime("+{$duration} months")
+    strtotime(
+        "+{$duration} months",
+        strtotime($start_date)
+    )
 );
 
 
 /* =========================================================
-   START DATABASE TRANSACTION
+   START TRANSACTION
 ========================================================= */
 
 $conn->begin_transaction();
@@ -245,7 +292,7 @@ try {
     if (!$membership) {
 
         throw new Exception(
-            "Unable to prepare membership query."
+            "Unable to create membership."
         );
 
     }
@@ -264,31 +311,29 @@ try {
     if (!$membership->execute()) {
 
         throw new Exception(
-            "Membership could not be created."
+            "Membership creation failed."
         );
 
     }
 
 
-    /* Get newly created membership ID */
+    $membership_id =
+        $conn->insert_id;
 
-    $membership_id = $conn->insert_id;
 
     $membership->close();
 
 
     /* =====================================================
-       SAVE PAYMENT
-
-       IMPORTANT:
-       payments table does NOT contain plan_id.
-
-       We use membership_id instead.
+       CREATE PAYMENT RECORD
     ===================================================== */
 
-    $payment_type = "Membership";
+    $payment_type =
+        "Manual Membership";
 
-    $payment_status = "Completed";
+    $payment_status =
+        "Completed";
+
 
     $payment = $conn->prepare("
         INSERT INTO payments
@@ -317,7 +362,7 @@ try {
     if (!$payment) {
 
         throw new Exception(
-            "Unable to prepare payment query."
+            "Unable to create payment record."
         );
 
     }
@@ -338,7 +383,7 @@ try {
     if (!$payment->execute()) {
 
         throw new Exception(
-            "Payment could not be processed."
+            "Payment record could not be created."
         );
 
     }
@@ -349,20 +394,15 @@ try {
 
     /* =====================================================
        CREATE NOTIFICATION
-
-       notifications table requires:
-       user_id
-       title
-       message
     ===================================================== */
 
-    $notification_title =
-        "Membership Activated";
+    $title =
+        "Membership Added";
 
-    $notification_message =
+    $message =
         "Your "
         . $plan["plan_name"]
-        . " membership has been activated successfully.";
+        . " membership has been added by the gym owner.";
 
     $notification_type =
         "Membership";
@@ -400,8 +440,8 @@ try {
     $notification->bind_param(
         "isssi",
         $member_id,
-        $notification_title,
-        $notification_message,
+        $title,
+        $message,
         $notification_type,
         $membership_id
     );
@@ -410,7 +450,7 @@ try {
     if (!$notification->execute()) {
 
         throw new Exception(
-            "Notification could not be created."
+            "Notification creation failed."
         );
 
     }
@@ -420,18 +460,14 @@ try {
 
 
     /* =====================================================
-       COMMIT TRANSACTION
+       COMMIT
     ===================================================== */
 
     $conn->commit();
 
 
-    /* =====================================================
-       REDIRECT TO MEMBER DASHBOARD
-    ===================================================== */
-
     header(
-        "Location: dashboard.php?payment=success"
+        "Location: members.php?added=success"
     );
 
     exit();
@@ -440,16 +476,14 @@ try {
 } catch (Exception $e) {
 
 
-    /* =====================================================
-       ROLLBACK EVERYTHING IF SOMETHING FAILS
-    ===================================================== */
-
     $conn->rollback();
 
 
     die(
-        "Payment process failed: "
-        . htmlspecialchars($e->getMessage())
+        "Unable to add member: "
+        . htmlspecialchars(
+            $e->getMessage()
+        )
     );
 
 }

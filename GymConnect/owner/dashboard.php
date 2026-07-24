@@ -51,6 +51,10 @@ $userName = $_SESSION["full_name"];
             </li>
 
             <li>
+                <a href="profile.php">👤 My Profile</a>
+            </li>
+
+            <li>
                 <a href="membership_plans.php">💳 Membership Plans</a>
             </li>
 
