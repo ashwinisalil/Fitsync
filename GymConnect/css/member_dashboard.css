@@ -1,0 +1,403 @@
+/* ==========================
+   MEMBER DASHBOARD CSS
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0b0f14;
+    color:#fff;
+}
+
+/* Sidebar */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#111827;
+    border-right:2px solid #00e5ff;
+    padding:20px;
+
+    /* Sidebar Scroll */
+    overflow-y:auto;
+    overflow-x:hidden;
+    scrollbar-width:thin;
+    scrollbar-color:#00e5ff #111827;
+}
+
+/* Sidebar Webkit Scrollbar */
+
+.sidebar::-webkit-scrollbar{
+    width:6px;
+}
+
+.sidebar::-webkit-scrollbar-track{
+    background:#111827;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:#00e5ff;
+    border-radius:20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+    background:#00bcd4;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo h2{
+    color:#00e5ff;
+    letter-spacing:2px;
+    font-size:28px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin:12px 0;
+}
+
+.sidebar ul li a{
+    text-decoration:none;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:14px 18px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a{
+    background:#00e5ff;
+    color:black;
+}
+
+.sidebar i{
+    width:25px;
+}
+
+/* Main Content */
+
+.main-content{
+    margin-left:250px;
+    padding:30px;
+}
+
+/* Topbar */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.topbar h1{
+    color:#00e5ff;
+    font-size:32px;
+}
+
+.member-name{
+    background:#111827;
+    padding:12px 22px;
+    border-radius:30px;
+    border:1px solid #00e5ff;
+}
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #00e5ff;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 20px rgba(0,229,255,.4);
+}
+
+.card i{
+    color:#00e5ff;
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.card p{
+    color:#ddd;
+    font-size:18px;
+}
+
+/* Details Section */
+
+.details-section{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+    margin-top:25px;
+}
+
+.details-card{
+    background:#111827;
+    border:1px solid #00e5ff;
+    border-radius:15px;
+    padding:25px;
+}
+
+.details-card h2{
+    color:#00e5ff;
+    margin-bottom:20px;
+}
+
+.details-card table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.details-card table td{
+    padding:14px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.details-card table tr:last-child td{
+    border-bottom:none;
+}
+
+/* ==========================
+   QUICK ACTION BUTTONS
+========================== */
+
+.action-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.btn{
+    display:block;
+    text-decoration:none;
+    text-align:center;
+    background:#00e5ff;
+    color:#000;
+    padding:14px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#00bcd4;
+    transform:scale(1.03);
+}
+
+.btn i{
+    margin-right:8px;
+}
+
+/* ==========================
+   NOTIFICATIONS
+========================== */
+
+.notification-box{
+    margin-top:35px;
+    background:#111827;
+    border:1px solid #00e5ff;
+    border-radius:15px;
+    padding:25px;
+}
+
+.notification-box h2{
+    color:#00e5ff;
+    margin-bottom:20px;
+}
+
+.notification{
+    background:#1b2430;
+    border-left:5px solid #00e5ff;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:10px;
+}
+
+.notification p{
+    margin-bottom:8px;
+    color:#ffffff;
+}
+
+.notification small{
+    color:#bdbdbd;
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b0f14;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00e5ff;
+    border-radius:20px;
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+
+.card,
+.details-card,
+.notification-box{
+    animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+
+@media(max-width:1000px){
+
+    .details-section{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+        width:70px;
+        padding:15px 8px;
+
+        /* Keep Sidebar Scrollable on Mobile */
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+
+    .logo h2{
+        display:none;
+    }
+
+    .sidebar ul li a{
+        justify-content:center;
+        padding:15px;
+    }
+
+    .sidebar ul li a i{
+        margin:0;
+        font-size:20px;
+    }
+
+    .sidebar ul li a{
+        font-size:0;
+    }
+
+    .sidebar ul li a i{
+        font-size:22px;
+    }
+
+    .main-content{
+        margin-left:70px;
+        padding:20px;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .details-card table td{
+        display:block;
+        width:100%;
+        padding:10px;
+    }
+
+    .details-card table tr{
+        display:block;
+        margin-bottom:15px;
+    }
+
+    .member-name{
+        width:100%;
+        text-align:center;
+    }
+
+    .topbar h1{
+        font-size:26px;
+    }
+
+}
+.location-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #00c2ff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.location-btn:hover {
+    background: #19ccff;
+    transform: translateY(-2px);
+}

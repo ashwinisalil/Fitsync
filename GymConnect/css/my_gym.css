@@ -1,0 +1,368 @@
+/* ==========================
+   MY GYM PAGE
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.main-content{
+
+    padding:40px;
+
+}
+
+.page-title{
+
+    font-size:34px;
+
+    color:#1e293b;
+
+    margin-bottom:30px;
+
+}
+
+.gym-card{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:#009fd1;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.gym-image{
+
+    width:220px;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    border:4px solid #00c2ff;
+
+    display:block;
+
+    margin:0 auto 25px;
+
+}
+
+.gym-name{
+
+    text-align:center;
+
+    font-size:30px;
+
+    color:#111827;
+
+    margin-bottom:25px;
+
+}
+/* ==========================
+   GYM INFORMATION
+========================== */
+
+.info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #e5e7eb;
+
+    font-size:17px;
+
+}
+
+.info strong{
+
+    color:#1e293b;
+
+    width:180px;
+
+}
+
+.info span{
+
+    flex:1;
+
+    color:#475569;
+
+}
+
+/* ==========================
+   STATUS BADGES
+========================== */
+
+.status{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:25px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#fff;
+
+}
+
+.status.pending{
+
+    background:#f59e0b;
+
+}
+
+.status.approved{
+
+    background:#10b981;
+
+}
+
+.status.rejected{
+
+    background:#ef4444;
+
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:14px 30px;
+
+    background:#00c2ff;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#009fd1;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-register{
+
+    background:#10b981;
+
+}
+
+.btn-register:hover{
+
+    background:#059669;
+
+}
+
+/* ==========================
+   NO GYM MESSAGE
+========================== */
+
+.no-gym{
+
+    text-align:center;
+
+    padding:50px;
+
+}
+
+.no-gym h2{
+
+    color:#1e293b;
+
+    margin-bottom:15px;
+
+}
+
+.no-gym p{
+
+    color:#64748b;
+
+    margin-bottom:25px;
+
+}
+/* ==========================
+   MY GYM CSS - PART 3
+========================== */
+
+/* Card Hover */
+
+.gym-card{
+
+    transition:0.3s ease;
+
+}
+
+.gym-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,0.18);
+
+}
+
+/* Image Hover */
+
+.gym-image{
+
+    transition:0.3s;
+
+}
+
+.gym-image:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .main-content{
+
+        padding:20px;
+
+    }
+
+    .gym-card{
+
+        padding:25px;
+
+    }
+
+    .gym-name{
+
+        font-size:24px;
+
+    }
+
+    .gym-image{
+
+        width:170px;
+
+        height:170px;
+
+    }
+
+    .info{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .info strong{
+
+        width:100%;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .gym-card{
+
+        padding:18px;
+
+    }
+
+    .page-title{
+
+        font-size:26px;
+
+    }
+
+    .gym-name{
+
+        font-size:22px;
+
+    }
+
+    .gym-image{
+
+        width:140px;
+
+        height:140px;
+
+    }
+
+    .info{
+
+        font-size:15px;
+
+    }
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00c2ff;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f5f9;
+
+}

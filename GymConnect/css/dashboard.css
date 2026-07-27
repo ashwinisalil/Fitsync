@@ -1,0 +1,632 @@
+
+/* =========================================================
+   GYMCONNECT OWNER DASHBOARD
+   Complete Dashboard CSS
+   Theme: Dark Navy + Cyan
+========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #111827;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   2. MAIN DASHBOARD CONTAINER
+========================================================= */
+
+.dashboard {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   3. SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    background: #0f172a;
+
+    z-index: 9999;
+
+    /* Sidebar scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0;
+
+    border-right: 1px solid #1e293b;
+}
+
+
+/* =========================================================
+   4. SIDEBAR SCROLLBAR
+========================================================= */
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #00c2ff;
+    border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #00a8dd;
+}
+
+
+/* Firefox */
+
+.sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #00c2ff #0f172a;
+}
+
+
+/* =========================================================
+   5. SIDEBAR LOGO
+========================================================= */
+
+.sidebar .logo {
+    width: 100%;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #0f172a;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+.sidebar .logo h2 {
+    color: #00c2ff;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   6. SIDEBAR MENU
+========================================================= */
+
+.sidebar ul {
+    width: 100%;
+
+    list-style: none;
+
+    padding: 20px 15px 40px 15px;
+
+    margin: 0;
+}
+
+.sidebar ul li {
+    width: 100%;
+
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    display: block;
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   7. SIDEBAR HOVER
+========================================================= */
+
+.sidebar ul li a:hover {
+    background: #00c2ff;
+
+    color: #000000;
+
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   8. ACTIVE SIDEBAR ITEM
+========================================================= */
+
+.sidebar ul li.active a {
+    background: #00c2ff;
+
+    color: #000000;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 194, 255, 0.20);
+}
+
+
+/* =========================================================
+   9. MAIN CONTENT
+========================================================= */
+
+.main-content {
+    margin-left: 270px;
+
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+
+    padding: 30px;
+}
+
+
+/* =========================================================
+   10. TOP BAR
+========================================================= */
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    background: #1e293b;
+
+    padding: 20px 30px;
+
+    margin-bottom: 30px;
+
+    border-radius: 15px;
+}
+
+.topbar h1 {
+    font-size: 30px;
+
+    font-weight: 600;
+}
+
+.topbar p {
+    margin-top: 5px;
+
+    color: #cbd5e1;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   11. PROFILE BADGE
+========================================================= */
+
+.profile {
+    background: #00c2ff;
+
+    color: #000000;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   12. DASHBOARD CARDS
+========================================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    width: 100%;
+
+    margin-bottom: 40px;
+}
+
+.card {
+    background: #1e293b;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    border-left: 5px solid #00c2ff;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 194, 255, 0.20);
+}
+
+.card h2 {
+    font-size: 38px;
+
+    color: #00c2ff;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #cbd5e1;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   13. TABLE SECTION
+========================================================= */
+
+.table-section {
+    width: 100%;
+
+    background: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    overflow-x: auto;
+}
+
+.table-section h2 {
+    color: #00c2ff;
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   14. TABLE
+========================================================= */
+
+table {
+    width: 100%;
+
+    min-width: 500px;
+
+    border-collapse: collapse;
+}
+
+table th {
+    background: #0f172a;
+
+    color: #ffffff;
+
+    padding: 15px;
+
+    text-align: left;
+
+    font-weight: 600;
+}
+
+table td {
+    padding: 15px;
+
+    color: #d1d5db;
+
+    border-bottom:
+        1px solid #334155;
+}
+
+table tr:hover {
+    background: #263548;
+}
+
+
+/* =========================================================
+   15. BUTTONS
+========================================================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #00c2ff;
+
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background: #19ccff;
+
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #ef4444;
+
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+
+/* =========================================================
+   16. STATUS LABELS
+========================================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.active-status {
+    background: #22c55e;
+
+    color: #ffffff;
+}
+
+.expired-status {
+    background: #ef4444;
+
+    color: #ffffff;
+}
+
+.pending-status {
+    background: #f59e0b;
+
+    color: #000000;
+}
+
+
+/* =========================================================
+   17. PAGE ANIMATION
+========================================================= */
+
+.main-content {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   18. MAIN PAGE SCROLLBAR
+========================================================= */
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #00c2ff;
+
+    border-radius: 20px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #00a8dd;
+}
+
+
+/* =========================================================
+   19. TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .sidebar {
+        width: 230px;
+    }
+
+    .main-content {
+        margin-left: 230px;
+
+        width: calc(100% - 230px);
+
+        padding: 25px;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   20. MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .dashboard {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: 400px;
+
+        overflow-y: auto;
+
+        border-right: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+    }
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .profile {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   21. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .sidebar {
+        max-height: 350px;
+    }
+
+    .sidebar .logo h2 {
+        font-size: 22px;
+    }
+
+    .sidebar ul li a {
+        padding: 13px;
+
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .topbar {
+        padding: 20px;
+    }
+
+    .topbar h1 {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .card h2 {
+        font-size: 30px;
+    }
+
+    .table-section {
+        padding: 20px;
+    }
+}

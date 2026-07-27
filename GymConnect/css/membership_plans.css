@@ -1,0 +1,271 @@
+/* ===================================
+   MEMBERSHIP PLANS
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:#f4f7fc;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:40px auto;
+
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.header h1{
+
+    color:#1e3a8a;
+
+    font-size:32px;
+
+}
+
+.add-btn{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:12px 25px;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+    transition:0.3s;
+
+}
+
+.add-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+/* ===================================
+   TABLE STYLING
+=================================== */
+
+th{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:17px;
+
+}
+
+td{
+
+    padding:15px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    color:#374151;
+
+    font-size:15px;
+
+}
+
+tr:hover{
+
+    background:#f8fafc;
+
+}
+
+tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+/* ===================================
+   ACTION BUTTONS
+=================================== */
+
+td a{
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    margin-right:10px;
+
+}
+
+td a:first-child{
+
+    color:#2563eb;
+
+}
+
+td a:last-child{
+
+    color:#dc2626;
+
+}
+
+td a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ===================================
+   EMPTY TABLE
+=================================== */
+
+td[colspan]{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#6b7280;
+
+    font-size:17px;
+
+}
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+
+@media (max-width: 768px){
+
+    .container{
+
+        width:95%;
+
+    }
+
+    .header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+    .header h1{
+
+        font-size:26px;
+
+    }
+
+    .add-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    table{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    th,
+    td{
+
+        padding:10px;
+
+        font-size:14px;
+
+    }
+
+    .header h1{
+
+        font-size:22px;
+
+    }
+
+}
+
+/* ===================================
+   SCROLLBAR
+=================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+    height:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f5f9;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1d4ed8;
+
+}
