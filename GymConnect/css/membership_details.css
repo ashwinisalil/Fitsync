@@ -1,0 +1,736 @@
+/* =========================================================
+   GYMCONNECT - MEMBERSHIP DETAILS
+   Dark + Cyan Theme
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    background: #0b0f14;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.details-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 35px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+
+.page-header h1 {
+    color: #00d9ff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+
+.page-header p {
+    color: #aeb7c4;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.back-btn,
+.dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn {
+    color: #ffffff;
+    background: #111927;
+    border: 1px solid #344556;
+}
+
+
+.back-btn:hover {
+    color: #00d9ff;
+    border-color: #00d9ff;
+}
+
+
+/* DASHBOARD BUTTON */
+
+.dashboard-btn {
+    color: #061018;
+    background: #00d9ff;
+    border: 1px solid #00d9ff;
+}
+
+
+.dashboard-btn:hover {
+    background: #00bcd9;
+    border-color: #00bcd9;
+}
+
+
+/* =========================================================
+   MEMBERSHIP HEADER CARD
+========================================================= */
+
+.membership-header-card {
+    background: #111927;
+    border: 1px solid #1c3444;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.membership-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.membership-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid rgba(0, 217, 255, 0.35);
+
+    color: #00d9ff;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+.membership-title h2 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+.membership-title p {
+    color: #7f8c9b;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+
+/* ACTIVE */
+
+.status-badge.active {
+    color: #72f5bd;
+    background: rgba(44, 214, 139, 0.12);
+    border: 1px solid rgba(44, 214, 139, 0.3);
+}
+
+
+/* EXPIRED */
+
+.status-badge.expired {
+    color: #ff8585;
+    background: rgba(255, 76, 96, 0.12);
+    border: 1px solid rgba(255, 76, 96, 0.3);
+}
+
+
+/* TRANSFERRED */
+
+.status-badge.transferred {
+    color: #b9a7ff;
+    background: rgba(145, 118, 255, 0.12);
+    border: 1px solid rgba(145, 118, 255, 0.3);
+}
+
+
+/* =========================================================
+   DETAILS GRID
+========================================================= */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   DETAILS CARD
+========================================================= */
+
+.details-card {
+    background: #111927;
+    border: 1px solid #1c3444;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+.details-card:hover {
+    border-color: #28465a;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-header {
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #1c3444;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.card-header h2 {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+.card-header p {
+    margin-top: 5px;
+    color: #7f8c9b;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   INFORMATION LIST
+========================================================= */
+
+.info-list {
+    padding: 8px 22px 20px;
+}
+
+
+.info-row {
+    min-height: 55px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    border-bottom: 1px solid #192837;
+}
+
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+
+.info-row span:first-child {
+    color: #7f8c9b;
+    font-size: 12px;
+}
+
+
+.info-row strong {
+    color: #e7edf3;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+    max-width: 65%;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.info-row strong.price {
+    color: #00d9ff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PLAN DESCRIPTION
+========================================================= */
+
+.description {
+    margin-top: 15px;
+    padding: 14px;
+
+    color: #aeb7c4;
+
+    background: #0b111b;
+
+    border: 1px solid #1c3444;
+    border-radius: 7px;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PAYMENT SUMMARY
+========================================================= */
+
+.payment-summary-card {
+    background: #111927;
+    border: 1px solid #1c3444;
+    border-radius: 12px;
+
+    padding: 25px;
+    margin-bottom: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+
+.payment-summary-card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.payment-summary-card span {
+    color: #7f8c9b;
+    font-size: 12px;
+}
+
+
+.payment-summary-card strong {
+    color: #00d9ff;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PAYMENT CARD
+========================================================= */
+
+.payment-card {
+    background: #111927;
+    border: 1px solid #1c3444;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   PAYMENT TABLE
+========================================================= */
+
+table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+}
+
+
+/* =========================================================
+   TABLE HEAD
+========================================================= */
+
+thead {
+    background: #0c131e;
+}
+
+
+th {
+    padding: 15px 14px;
+
+    text-align: left;
+
+    color: #00d9ff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #1c3444;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+td {
+    padding: 15px 14px;
+
+    color: #dbe2e9;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #192837;
+
+    vertical-align: middle;
+}
+
+
+tbody tr {
+    transition: 0.2s ease;
+}
+
+
+tbody tr:hover {
+    background: #141f2d;
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   PAYMENT AMOUNT
+========================================================= */
+
+td.amount {
+    color: #00d9ff;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PAYMENT STATUS
+========================================================= */
+
+.payment-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* COMPLETED */
+
+.payment-status.completed {
+    color: #72f5bd;
+    background: rgba(44, 214, 139, 0.12);
+    border: 1px solid rgba(44, 214, 139, 0.3);
+}
+
+
+/* PENDING */
+
+.payment-status.pending {
+    color: #ffd36b;
+    background: rgba(255, 190, 50, 0.12);
+    border: 1px solid rgba(255, 190, 50, 0.3);
+}
+
+
+/* FAILED */
+
+.payment-status.failed {
+    color: #ff8585;
+    background: rgba(255, 76, 96, 0.12);
+    border: 1px solid rgba(255, 76, 96, 0.3);
+}
+
+
+/* REFUNDED */
+
+.payment-status.refunded {
+    color: #b9a7ff;
+    background: rgba(145, 118, 255, 0.12);
+    border: 1px solid rgba(145, 118, 255, 0.3);
+}
+
+
+/* =========================================================
+   NO RECORDS
+========================================================= */
+
+.no-records {
+    text-align: center;
+
+    padding: 55px 20px !important;
+
+    color: #7f8c9b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLE SCROLLBAR
+========================================================= */
+
+.table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #0b111b;
+}
+
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #26394a;
+    border-radius: 10px;
+}
+
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #00d9ff;
+}
+
+
+/* =========================================================
+   BOTTOM ACTIONS
+========================================================= */
+
+.bottom-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+
+
+.bottom-actions .back-btn {
+    padding: 11px 22px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .details-page {
+        padding: 25px;
+    }
+
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 700px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .details-page {
+        padding: 18px;
+    }
+
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+
+    .back-btn,
+    .dashboard-btn {
+        width: 100%;
+    }
+
+
+    .membership-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .membership-header-card > div:last-child {
+        width: 100%;
+    }
+
+
+    .membership-header-card .status-badge {
+        width: 100%;
+    }
+
+
+    .payment-summary-card {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 500px
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .page-header h1 {
+        font-size: 26px;
+    }
+
+
+    .membership-header-card {
+        padding: 20px;
+    }
+
+
+    .membership-title h2 {
+        font-size: 19px;
+    }
+
+
+    .details-card .card-header {
+        padding: 18px;
+    }
+
+
+    .info-list {
+        padding: 5px 18px 18px;
+    }
+
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 13px 0;
+    }
+
+
+    .info-row strong {
+        max-width: 100%;
+        text-align: left;
+    }
+
+
+    .payment-summary-card {
+        padding: 20px;
+    }
+
+
+    .payment-summary-card strong {
+        font-size: 23px;
+    }
+
+}
