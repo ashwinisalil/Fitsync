@@ -1,0 +1,757 @@
+/* =========================================================
+   GYMCONNECT - MEMBER TRANSFER REQUEST
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #0b0f14;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.transfer-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+
+.page-header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+.page-header p {
+    color: #929ba8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 25px;
+    padding: 10px 17px;
+    background: #151b22;
+    border: 1px solid #2a323c;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.25s ease;
+}
+
+
+.back-btn:hover {
+    background: #202730;
+    border-color: #414b58;
+}
+
+
+/* =========================================================
+   ALERT MESSAGES
+========================================================= */
+
+.alert {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+
+.alert-success,
+.success {
+    background: rgba(46, 204, 113, 0.10);
+    border: 1px solid rgba(46, 204, 113, 0.30);
+    color: #67e49a;
+}
+
+
+.alert-error,
+.error {
+    background: rgba(231, 76, 60, 0.10);
+    border: 1px solid rgba(231, 76, 60, 0.30);
+    color: #ff8175;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.transfer-form-card {
+    background: #11161d;
+    border: 1px solid #252d37;
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+
+.transfer-form-card h2 {
+    font-size: 21px;
+    margin-bottom: 7px;
+}
+
+
+.transfer-form-card > p {
+    color: #8d97a4;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+
+.form-group label {
+    display: block;
+    color: #e5e8ec;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+
+.form-group small {
+    display: block;
+    margin-top: 7px;
+    color: #737e8c;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 15px;
+    background: #0b0f14;
+    color: #ffffff;
+    border: 1px solid #303945;
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    transition: 0.25s ease;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #596675;
+    background: #0d1218;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #68727f;
+}
+
+
+.form-group select {
+    cursor: pointer;
+}
+
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   GYM SELECTION
+========================================================= */
+
+.gym-selection {
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #0d1218;
+    border: 1px solid #242d37;
+    border-radius: 10px;
+}
+
+
+.gym-selection h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+
+.gym-selection p {
+    color: #818b98;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   GYM CARDS
+========================================================= */
+
+.gym-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+
+.gym-card {
+    position: relative;
+    padding: 18px;
+    background: #151b22;
+    border: 1px solid #2a333e;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+
+.gym-card:hover {
+    border-color: #505c6a;
+    background: #1a2129;
+}
+
+
+.gym-card.active,
+.gym-card.selected {
+    border-color: #5b6877;
+    background: #1a222b;
+}
+
+
+.gym-card h4 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+
+.gym-card p {
+    margin: 0;
+    color: #858f9c;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MEMBERSHIP INFORMATION
+========================================================= */
+
+.membership-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #0d1218;
+    border: 1px solid #242d37;
+    border-radius: 10px;
+}
+
+
+.membership-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.membership-item span {
+    color: #7f8996;
+    font-size: 11px;
+}
+
+
+.membership-item strong {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TRANSFER FEE INFORMATION
+========================================================= */
+
+.transfer-fee-box {
+    padding: 20px;
+    margin-bottom: 25px;
+    background: rgba(52, 152, 219, 0.06);
+    border: 1px solid rgba(52, 152, 219, 0.22);
+    border-radius: 10px;
+}
+
+
+.transfer-fee-box h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+
+.transfer-fee-box p {
+    color: #9aa4b1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+.fee-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 18px;
+}
+
+
+.fee-item {
+    padding: 15px;
+    background: #111820;
+    border: 1px solid #25303b;
+    border-radius: 8px;
+}
+
+
+.fee-item span {
+    display: block;
+    color: #7f8996;
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+
+.fee-item strong {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   WARNING / IMPORTANT NOTE
+========================================================= */
+
+.warning-box {
+    display: flex;
+    gap: 12px;
+    padding: 17px;
+    margin-bottom: 25px;
+    background: rgba(241, 196, 15, 0.07);
+    border: 1px solid rgba(241, 196, 15, 0.22);
+    border-radius: 9px;
+}
+
+
+.warning-icon {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(241, 196, 15, 0.15);
+    color: #f4d35e;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.warning-box p {
+    color: #c5b982;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding-top: 22px;
+    border-top: 1px solid #252d37;
+}
+
+
+.cancel-btn,
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+
+.cancel-btn {
+    background: #171d25;
+    color: #ffffff;
+    border: 1px solid #303945;
+}
+
+
+.cancel-btn:hover {
+    background: #222a34;
+}
+
+
+.submit-btn {
+    background: #238b57;
+    color: #ffffff;
+    border: 1px solid #2ca866;
+}
+
+
+.submit-btn:hover {
+    background: #2ca866;
+}
+
+
+/* =========================================================
+   EXISTING TRANSFER STATUS
+========================================================= */
+
+.status-card {
+    padding: 25px;
+    background: #11161d;
+    border: 1px solid #252d37;
+    border-radius: 12px;
+}
+
+
+.status-card h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+
+.status-card p {
+    color: #8d97a4;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    margin-top: 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.status-badge.pending {
+    background: rgba(241, 196, 15, 0.12);
+    border: 1px solid rgba(241, 196, 15, 0.25);
+    color: #f5d65c;
+}
+
+
+.status-badge.approved {
+    background: rgba(46, 204, 113, 0.12);
+    border: 1px solid rgba(46, 204, 113, 0.25);
+    color: #65e69a;
+}
+
+
+.status-badge.rejected {
+    background: rgba(231, 76, 60, 0.12);
+    border: 1px solid rgba(231, 76, 60, 0.25);
+    color: #ff8174;
+}
+
+
+.status-badge.completed {
+    background: rgba(52, 152, 219, 0.12);
+    border: 1px solid rgba(52, 152, 219, 0.25);
+    color: #63b8f2;
+}
+
+
+/* =========================================================
+   TRANSFER HISTORY
+========================================================= */
+
+.transfer-history {
+    margin-top: 30px;
+}
+
+
+.transfer-history h2 {
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+
+.history-card {
+    padding: 20px;
+    margin-bottom: 15px;
+    background: #11161d;
+    border: 1px solid #252d37;
+    border-radius: 10px;
+}
+
+
+.history-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+
+.history-card h3 {
+    font-size: 15px;
+}
+
+
+.history-card p {
+    color: #818b98;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+.history-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #242c35;
+}
+
+
+.history-details span {
+    display: block;
+    color: #737e8b;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+
+.history-details strong {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NO TRANSFER
+========================================================= */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    padding: 35px;
+    text-align: center;
+    background: #11161d;
+    border: 1px solid #252d37;
+    border-radius: 12px;
+}
+
+
+.empty-state-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background: #1b222b;
+    color: #9aa4b1;
+    font-size: 22px;
+}
+
+
+.empty-state h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+
+.empty-state p {
+    max-width: 500px;
+    color: #838d9a;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .transfer-container {
+        padding: 30px 25px;
+    }
+
+
+    .membership-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .fee-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .history-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .transfer-container {
+        padding: 20px 15px;
+    }
+
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+
+    .transfer-form-card {
+        padding: 20px;
+    }
+
+
+    .gym-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    .membership-info {
+        grid-template-columns: 1fr;
+    }
+
+
+    .fee-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .history-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .history-card-header {
+        flex-direction: column;
+    }
+
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+
+    .cancel-btn,
+    .submit-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .transfer-container {
+        padding: 15px 10px;
+    }
+
+
+    .transfer-form-card {
+        padding: 17px;
+    }
+
+
+    .page-header h1 {
+        font-size: 21px;
+    }
+
+}

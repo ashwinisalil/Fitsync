@@ -1,0 +1,1004 @@
+/* =========================================================
+   GYMCONNECT - MEMBERSHIP TRANSFER CSS
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #0b0f14;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.transfer-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+.page-header p {
+    color: #9ba4b2;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.request-id {
+    display: inline-block;
+    color: #8d99a8;
+    font-size: 12px;
+    margin-bottom: 7px;
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    border: 1px solid #2a313b;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    background: #151a21;
+    font-size: 14px;
+    transition: 0.25s ease;
+    white-space: nowrap;
+}
+
+
+.back-btn:hover {
+    background: #1d242d;
+    border-color: #3b4552;
+}
+
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.alert {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 9px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+
+.alert.success {
+    background: rgba(46, 204, 113, 0.10);
+    border-color: rgba(46, 204, 113, 0.35);
+    color: #65e69a;
+}
+
+
+.alert.error {
+    background: rgba(231, 76, 60, 0.10);
+    border-color: rgba(231, 76, 60, 0.35);
+    color: #ff8174;
+}
+
+
+/* =========================================================
+   GYM SELECTOR
+========================================================= */
+
+.gym-selector-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #11161d;
+    border: 1px solid #222a34;
+    border-radius: 12px;
+    padding: 22px 25px;
+    margin-bottom: 25px;
+}
+
+
+.gym-selector-card label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+.gym-selector-card p {
+    color: #8e98a6;
+    font-size: 13px;
+}
+
+
+.gym-selector-card select {
+    min-width: 250px;
+    padding: 12px 15px;
+    background: #0b0f14;
+    color: #ffffff;
+    border: 1px solid #303945;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.gym-selector-card select:focus {
+    border-color: #596575;
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+========================================================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+
+.summary-card {
+    background: #11161d;
+    border: 1px solid #222a34;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+
+.summary-card span {
+    display: block;
+    color: #8e98a6;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+
+.summary-card strong {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TRANSFER LIST
+========================================================= */
+
+.transfer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+
+.transfer-card {
+    background: #11161d;
+    border: 1px solid #252e39;
+    border-radius: 14px;
+    padding: 25px;
+    transition: 0.25s ease;
+}
+
+
+.transfer-card:hover {
+    border-color: #3b4653;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #222a34;
+}
+
+
+.card-header h2 {
+    font-size: 21px;
+    margin-top: 3px;
+}
+
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+.status-badge.pending {
+    background: rgba(241, 196, 15, 0.12);
+    color: #f5d65c;
+    border: 1px solid rgba(241, 196, 15, 0.25);
+}
+
+
+.status-badge.approved {
+    background: rgba(46, 204, 113, 0.12);
+    color: #65e69a;
+    border: 1px solid rgba(46, 204, 113, 0.25);
+}
+
+
+.status-badge.rejected {
+    background: rgba(231, 76, 60, 0.12);
+    color: #ff8174;
+    border: 1px solid rgba(231, 76, 60, 0.25);
+}
+
+
+.status-badge.completed {
+    background: rgba(52, 152, 219, 0.12);
+    color: #63b8f2;
+    border: 1px solid rgba(52, 152, 219, 0.25);
+}
+
+
+/* =========================================================
+   MEMBER INFORMATION
+========================================================= */
+
+.member-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 22px 0;
+}
+
+
+.member-info > div,
+.financial-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.member-info span,
+.financial-grid span,
+.detail-item span,
+.financial-item span,
+.request-date span {
+    color: #818b99;
+    font-size: 12px;
+}
+
+
+.member-info strong,
+.financial-grid strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   TRANSFER ROUTE
+========================================================= */
+
+.transfer-route {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 22px;
+    background: #0c1117;
+    border: 1px solid #202832;
+    border-radius: 10px;
+}
+
+
+.gym-box {
+    padding: 18px;
+    background: #111820;
+    border: 1px solid #252e38;
+    border-radius: 9px;
+}
+
+
+.gym-box span {
+    display: block;
+    color: #7f8997;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+
+.gym-box strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+
+.gym-box small {
+    display: block;
+    color: #8993a1;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+.route-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #8994a2;
+}
+
+
+/* =========================================================
+   FINANCIAL SECTION
+========================================================= */
+
+.financial-section {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid #222a34;
+}
+
+
+.financial-section h3 {
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+
+.financial-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+.financial-grid strong {
+    font-size: 15px;
+}
+
+
+.financial-grid strong.gym-share {
+    color: #65e69a;
+}
+
+
+/* =========================================================
+   REASON BOX
+========================================================= */
+
+.reason-box {
+    margin-top: 22px;
+    padding: 18px;
+    background: #0c1117;
+    border: 1px solid #222a34;
+    border-radius: 9px;
+}
+
+
+.reason-box span {
+    display: block;
+    color: #818b99;
+    font-size: 12px;
+    margin-bottom: 9px;
+}
+
+
+.reason-box p {
+    color: #d5dae0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   REQUEST DATE
+========================================================= */
+
+.request-date {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #222a34;
+}
+
+
+.request-date strong {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CARD ACTIONS
+========================================================= */
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+
+
+.card-actions a,
+.decision-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 17px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+
+.view-btn {
+    background: #171d25;
+    color: #ffffff;
+    border: 1px solid #303945;
+}
+
+
+.view-btn:hover {
+    background: #222a34;
+}
+
+
+.approve-btn {
+    background: #238b57;
+    color: #ffffff;
+    border: 1px solid #2ca866;
+}
+
+
+.approve-btn:hover {
+    background: #2ca866;
+}
+
+
+.reject-btn {
+    background: #5c2522;
+    color: #ffaaa2;
+    border: 1px solid #79332e;
+}
+
+
+.reject-btn:hover {
+    background: #71302b;
+}
+
+
+/* =========================================================
+   EMPTY CARD
+========================================================= */
+
+.empty-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    padding: 40px;
+    text-align: center;
+    background: #11161d;
+    border: 1px solid #222a34;
+    border-radius: 14px;
+}
+
+
+.empty-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: #1a212a;
+    color: #9ba5b2;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+.empty-card h2 {
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+
+.empty-card p {
+    max-width: 500px;
+    color: #8993a1;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   DETAILS PAGE
+========================================================= */
+
+.details-status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 25px;
+    margin-bottom: 22px;
+    background: #11161d;
+    border: 1px solid #222a34;
+    border-radius: 12px;
+}
+
+
+.details-status-card > span {
+    color: #9ba4b2;
+    font-size: 14px;
+}
+
+
+.details-card {
+    margin-bottom: 22px;
+    padding: 25px;
+    background: #11161d;
+    border: 1px solid #222a34;
+    border-radius: 13px;
+}
+
+
+.details-card-header {
+    margin-bottom: 22px;
+}
+
+
+.details-card-header h2 {
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+
+.details-card-header p {
+    color: #818b99;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.detail-item strong {
+    font-size: 14px;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   DETAILS FINANCIAL GRID
+========================================================= */
+
+.financial-item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.financial-item strong {
+    font-size: 17px;
+}
+
+
+.financial-item strong.gym-share {
+    color: #65e69a;
+}
+
+
+.financial-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+/* =========================================================
+   DECISION CARD
+========================================================= */
+
+.decision-card {
+    padding: 28px;
+    margin-top: 25px;
+    background: #11161d;
+    border: 1px solid #303945;
+    border-radius: 13px;
+}
+
+
+.decision-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+
+.decision-card > p {
+    max-width: 850px;
+    color: #9aa4b1;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+.decision-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   INFO CARDS
+========================================================= */
+
+.info-card {
+    padding: 22px 25px;
+    margin-top: 25px;
+    border-radius: 11px;
+}
+
+
+.info-card strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+
+.info-card p {
+    color: #aab2bd;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.approved-info {
+    background: rgba(46, 204, 113, 0.08);
+    border: 1px solid rgba(46, 204, 113, 0.25);
+}
+
+
+.rejected-info {
+    background: rgba(231, 76, 60, 0.08);
+    border: 1px solid rgba(231, 76, 60, 0.25);
+}
+
+
+.completed-info {
+    background: rgba(52, 152, 219, 0.08);
+    border: 1px solid rgba(52, 152, 219, 0.25);
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+
+.timeline-dot {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #202832;
+    color: #aeb7c1;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.timeline-item.completed .timeline-dot {
+    background: #238b57;
+    color: #ffffff;
+}
+
+
+.timeline-item.rejected .timeline-dot {
+    background: #6b2a26;
+    color: #ffaaa2;
+}
+
+
+.timeline-item.pending .timeline-dot {
+    background: #5c4d1d;
+    color: #f5d65c;
+}
+
+
+.timeline-item strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+.timeline-item p {
+    color: #818b99;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .transfer-page {
+        padding: 30px 25px;
+    }
+
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .member-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .financial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .transfer-page {
+        padding: 20px 15px;
+    }
+
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .page-header h1 {
+        font-size: 25px;
+    }
+
+
+    .back-btn {
+        width: 100%;
+    }
+
+
+    .gym-selector-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .gym-selector-card select {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .transfer-card,
+    .details-card,
+    .decision-card {
+        padding: 18px;
+    }
+
+
+    .card-header {
+        flex-direction: column;
+    }
+
+
+    .member-info {
+        grid-template-columns: 1fr;
+    }
+
+
+    .transfer-route {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+
+    .route-arrow {
+        transform: rotate(90deg);
+    }
+
+
+    .financial-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .card-actions a {
+        width: 100%;
+    }
+
+
+    .decision-actions {
+        flex-direction: column;
+    }
+
+
+    .decision-actions a {
+        width: 100%;
+    }
+
+
+    .details-status-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .request-date {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .page-header h1 {
+        font-size: 22px;
+    }
+
+
+    .card-header h2 {
+        font-size: 18px;
+    }
+
+
+    .details-card-header h2 {
+        font-size: 17px;
+    }
+
+
+    .gym-box {
+        padding: 15px;
+    }
+
+
+    .empty-card {
+        padding: 25px 18px;
+    }
+
+}

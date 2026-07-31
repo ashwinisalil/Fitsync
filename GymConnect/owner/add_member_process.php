@@ -1,19 +1,15 @@
-```php
 <?php
 
 session_start();
 
 if (
     !isset($_SESSION["user_id"]) ||
+    !isset($_SESSION["role"]) ||
     $_SESSION["role"] !== "owner"
 ) {
-
     header("Location: ../login.php");
-
     exit();
-
 }
-
 
 require_once "../database/connection.php";
 
@@ -25,13 +21,21 @@ require_once "../database/connection.php";
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
     header("Location: members.php");
-
     exit();
 
 }
 
 
+/* =========================================================
+   OWNER ID
+========================================================= */
+
 $owner_id = (int) $_SESSION["user_id"];
+
+
+/* =========================================================
+   GET FORM DATA
+========================================================= */
 
 $email = trim(
     $_POST["email"] ?? ""
@@ -45,13 +49,13 @@ $plan_id = (int) (
     $_POST["plan_id"] ?? 0
 );
 
-$start_date =
-    $_POST["start_date"] ?? "";
+$start_date = trim(
+    $_POST["start_date"] ?? ""
+);
 
-$payment_method =
-    trim(
-        $_POST["payment_method"] ?? ""
-    );
+$payment_method = trim(
+    $_POST["payment_method"] ?? ""
+);
 
 
 /* =========================================================
@@ -74,16 +78,76 @@ if (
 
 
 /* =========================================================
-   FIND MEMBER
+   ALLOWED PAYMENT METHODS
+========================================================= */
+
+$allowed_payment_methods = [
+    "Cash",
+    "UPI",
+    "Card",
+    "Bank Transfer",
+    "Other"
+];
+
+
+if (
+    !in_array(
+        $payment_method,
+        $allowed_payment_methods,
+        true
+    )
+) {
+
+    die(
+        "Invalid payment method selected."
+    );
+
+}
+
+
+/* =========================================================
+   VALIDATE DATE
+========================================================= */
+
+$date_object = DateTime::createFromFormat(
+    "Y-m-d",
+    $start_date
+);
+
+
+if (
+    !$date_object ||
+    $date_object->format("Y-m-d") !== $start_date
+) {
+
+    die(
+        "Invalid membership start date."
+    );
+
+}
+
+
+/* =========================================================
+   FIND MEMBER BY EMAIL
 ========================================================= */
 
 $stmt = $conn->prepare("
-    SELECT user_id
+    SELECT user_id, full_name
     FROM users
     WHERE email = ?
     AND role = 'member'
     LIMIT 1
 ");
+
+
+if (!$stmt) {
+
+    die(
+        "Database error while finding member."
+    );
+
+}
+
 
 $stmt->bind_param(
     "s",
@@ -107,11 +171,11 @@ if ($result->num_rows === 0) {
 }
 
 
-$member =
-    $result->fetch_assoc();
+$member = $result->fetch_assoc();
 
-$member_id =
-    (int) $member["user_id"];
+$member_id = (int) $member["user_id"];
+
+$member_name = $member["full_name"];
 
 $stmt->close();
 
@@ -121,12 +185,24 @@ $stmt->close();
 ========================================================= */
 
 $stmt = $conn->prepare("
-    SELECT gym_id
+    SELECT
+        gym_id,
+        gym_name
     FROM gyms
     WHERE gym_id = ?
     AND owner_id = ?
     LIMIT 1
 ");
+
+
+if (!$stmt) {
+
+    die(
+        "Database error while verifying gym."
+    );
+
+}
+
 
 $stmt->bind_param(
     "ii",
@@ -144,29 +220,45 @@ if ($result->num_rows === 0) {
     $stmt->close();
 
     die(
-        "Invalid gym selection."
+        "Invalid gym selection. "
+        . "This gym does not belong to your account."
     );
 
 }
+
+
+$gym = $result->fetch_assoc();
+
+$gym_name = $gym["gym_name"];
 
 $stmt->close();
 
 
 /* =========================================================
-   GET PLAN
+   GET MEMBERSHIP PLAN
 ========================================================= */
 
 $stmt = $conn->prepare("
     SELECT
         plan_id,
+        plan_name,
         duration_months,
-        price,
-        plan_name
+        price
     FROM membership_plans
     WHERE plan_id = ?
     AND gym_id = ?
     LIMIT 1
 ");
+
+
+if (!$stmt) {
+
+    die(
+        "Database error while finding membership plan."
+    );
+
+}
+
 
 $stmt->bind_param(
     "ii",
@@ -184,20 +276,19 @@ if ($result->num_rows === 0) {
     $stmt->close();
 
     die(
-        "Invalid membership plan."
+        "Invalid membership plan selected."
     );
 
 }
 
 
-$plan =
-    $result->fetch_assoc();
+$plan = $result->fetch_assoc();
 
-$duration =
-    (int) $plan["duration_months"];
+$plan_name = $plan["plan_name"];
 
-$amount =
-    (float) $plan["price"];
+$duration = (int) $plan["duration_months"];
+
+$amount = (float) $plan["price"];
 
 $stmt->close();
 
@@ -214,6 +305,16 @@ $stmt = $conn->prepare("
     AND status = 'Active'
     LIMIT 1
 ");
+
+
+if (!$stmt) {
+
+    die(
+        "Database error while checking membership."
+    );
+
+}
+
 
 $stmt->bind_param(
     "ii",
@@ -237,6 +338,7 @@ if ($result->num_rows > 0) {
 
 }
 
+
 $stmt->close();
 
 
@@ -247,14 +349,14 @@ $stmt->close();
 $end_date = date(
     "Y-m-d",
     strtotime(
-        "+{$duration} months",
+        "+" . $duration . " months",
         strtotime($start_date)
     )
 );
 
 
 /* =========================================================
-   START TRANSACTION
+   START DATABASE TRANSACTION
 ========================================================= */
 
 $conn->begin_transaction();
@@ -264,7 +366,7 @@ try {
 
 
     /* =====================================================
-       CREATE MEMBERSHIP
+       1. CREATE MEMBERSHIP
     ===================================================== */
 
     $membership = $conn->prepare("
@@ -292,7 +394,7 @@ try {
     if (!$membership) {
 
         throw new Exception(
-            "Unable to create membership."
+            "Unable to prepare membership creation."
         );
 
     }
@@ -311,7 +413,8 @@ try {
     if (!$membership->execute()) {
 
         throw new Exception(
-            "Membership creation failed."
+            "Membership creation failed: "
+            . $membership->error
         );
 
     }
@@ -325,14 +428,48 @@ try {
 
 
     /* =====================================================
-       CREATE PAYMENT RECORD
+       2. CREATE PAYMENT RECORD
     ===================================================== */
 
+    /*
+       IMPORTANT:
+
+       Your payments table has:
+
+       payment_id
+       membership_id
+       member_id
+       gym_id
+       amount
+       payment_type
+       payment_method
+       transaction_id
+       payment_status
+       payment_date
+       notes
+       recorded_by
+
+       We are not inserting:
+       payment_id
+       payment_date
+
+       because they have automatic values.
+
+       transaction_id is NULL for manual payments.
+    */
+
+
     $payment_type =
-        "Manual Membership";
+        "Membership";
 
     $payment_status =
         "Completed";
+
+    $transaction_id =
+        NULL;
+
+    $notes =
+        "Membership payment recorded by gym owner.";
 
 
     $payment = $conn->prepare("
@@ -344,10 +481,16 @@ try {
             amount,
             payment_type,
             payment_method,
-            payment_status
+            transaction_id,
+            payment_status,
+            notes,
+            recorded_by
         )
         VALUES
         (
+            ?,
+            ?,
+            ?,
             ?,
             ?,
             ?,
@@ -362,28 +505,32 @@ try {
     if (!$payment) {
 
         throw new Exception(
-            "Unable to create payment record."
+            "Unable to prepare payment record."
         );
 
     }
 
 
     $payment->bind_param(
-        "iiidsss",
+        "iiidsssssi",
         $membership_id,
         $member_id,
         $gym_id,
         $amount,
         $payment_type,
         $payment_method,
-        $payment_status
+        $transaction_id,
+        $payment_status,
+        $notes,
+        $owner_id
     );
 
 
     if (!$payment->execute()) {
 
         throw new Exception(
-            "Payment record could not be created."
+            "Payment record could not be created: "
+            . $payment->error
         );
 
     }
@@ -393,16 +540,20 @@ try {
 
 
     /* =====================================================
-       CREATE NOTIFICATION
+       3. CREATE NOTIFICATION
     ===================================================== */
 
     $title =
         "Membership Added";
 
+
     $message =
         "Your "
-        . $plan["plan_name"]
-        . " membership has been added by the gym owner.";
+        . $plan_name
+        . " membership at "
+        . $gym_name
+        . " has been successfully added.";
+
 
     $notification_type =
         "Membership";
@@ -431,7 +582,7 @@ try {
     if (!$notification) {
 
         throw new Exception(
-            "Unable to create notification."
+            "Unable to prepare notification."
         );
 
     }
@@ -450,7 +601,8 @@ try {
     if (!$notification->execute()) {
 
         throw new Exception(
-            "Notification creation failed."
+            "Notification creation failed: "
+            . $notification->error
         );
 
     }
@@ -460,11 +612,15 @@ try {
 
 
     /* =====================================================
-       COMMIT
+       4. COMMIT TRANSACTION
     ===================================================== */
 
     $conn->commit();
 
+
+    /* =====================================================
+       SUCCESS REDIRECT
+    ===================================================== */
 
     header(
         "Location: members.php?added=success"
@@ -475,6 +631,10 @@ try {
 
 } catch (Exception $e) {
 
+
+    /* =====================================================
+       ROLLBACK IF ANYTHING FAILS
+    ===================================================== */
 
     $conn->rollback();
 
@@ -489,4 +649,3 @@ try {
 }
 
 ?>
-```

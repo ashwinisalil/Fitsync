@@ -58,6 +58,11 @@ $totalOwners = $conn->query("SELECT COUNT(*) AS total FROM users WHERE role='own
                 <a href="approved_gyms.php">✅ Approved Gyms</a>
             </li>
 
+            <li> 
+                <a href="transfer_revenue.php">
+                Transfer Revenue
+            </a>
+
             <li>
                 <a href="../logout.php">🚪 Logout</a>
             </li>

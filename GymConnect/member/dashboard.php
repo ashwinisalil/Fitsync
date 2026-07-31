@@ -18,6 +18,7 @@ $user_id = $_SESSION["user_id"];
 =========================== */
 
 $sql = "SELECT
+
             u.full_name,
             u.email,
             u.phone,
@@ -36,6 +37,7 @@ $sql = "SELECT
 
         LEFT JOIN memberships m
             ON u.user_id = m.member_id
+            AND m.status = 'Active'
 
         LEFT JOIN gyms g
             ON m.gym_id = g.gym_id
@@ -45,13 +47,42 @@ $sql = "SELECT
 
         WHERE u.user_id = ?
 
+        ORDER BY m.membership_id DESC
+
         LIMIT 1";
 
+
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i",$user_id);
+
+
+if (!$stmt) {
+
+    die(
+        "Database error: " .
+        htmlspecialchars($conn->error)
+    );
+
+}
+
+
+$stmt->bind_param(
+    "i",
+    $user_id
+);
+
+
 $stmt->execute();
 
-$member = $stmt->get_result()->fetch_assoc();
+
+$result =
+    $stmt->get_result();
+
+
+$member =
+    $result->fetch_assoc();
+
+
+$stmt->close();
 
 /* ===========================
    CHECK MEMBERSHIP
@@ -59,8 +90,16 @@ $member = $stmt->get_result()->fetch_assoc();
 
 $hasMembership = false;
 
-if(!empty($member["membership_id"])){
+$hasMembership = false;
+
+if (
+    !empty($member) &&
+    !empty($member["membership_id"]) &&
+    $member["status"] === "Active"
+) {
+
     $hasMembership = true;
+
 }
 
 /* ===========================
